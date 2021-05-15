@@ -26,9 +26,21 @@ function App() {
 
   return (
     <Router>
-      <div className="App">
+      <div
+        className="App"
+        style={{
+          display: "grid",
+          gridGap: "20px",
+        }}
+      >
         <Header></Header>
-        <nav>
+        <nav
+          style={{
+            display: "flex",
+            flexDirection: "row",
+            justifyContent: "space-around",
+          }}
+        >
           <Link to="/">Shop</Link>
           <Link to="/basket">Basket</Link>
           <Link to="/payment">Payment</Link>

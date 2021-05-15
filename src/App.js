@@ -47,7 +47,6 @@ function App() {
           <Link to="/thanks">Thanks</Link>
         </nav>
         <BackButton></BackButton>
-        <Button text="View Basket"></Button>
         <main>
           <Switch>
             <Route path="/" exact render={() => <ProductView></ProductView>} />

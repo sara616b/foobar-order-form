@@ -1,7 +1,7 @@
 import BeerForProductList from "./BeerForProductList";
 import Button from "./Button";
 
-export default function ProductView() {
+export default function ProductView({ beerTypes }) {
   return (
     <div
       style={{
@@ -20,9 +20,12 @@ export default function ProductView() {
           boxShadow: "0px 4px 11px rgba(0, 0, 0, 0.51)",
         }}
       ></Button>
-      <BeerForProductList></BeerForProductList>
-      <BeerForProductList></BeerForProductList>
-      <BeerForProductList></BeerForProductList>
+      {beerTypes.map((product) => (
+        <BeerForProductList
+          info={product}
+          key={product.name}
+        ></BeerForProductList>
+      ))}
     </div>
   );
 }

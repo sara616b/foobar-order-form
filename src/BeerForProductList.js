@@ -1,6 +1,6 @@
 import Button from "./Button";
 
-export default function BeerForProductList() {
+export default function BeerForProductList({ info }) {
   return (
     <article
       style={{
@@ -15,16 +15,21 @@ export default function BeerForProductList() {
           display: "flex",
           flexDirection: "row",
           justifyContent: "space-between",
+          marginBottom: "10px",
         }}
       >
         <div
           style={{
             flexBasis: "100px",
             flexGrow: "1",
+            color: "white",
+            width: "100px",
+            backgroundImage: "url('./images/" + info.label + "')",
+            backgroundSize: "cover",
+            backgroundRepeat: "no-repeat",
+            marginRight: "10px",
           }}
-        >
-          Image
-        </div>
+        ></div>
         <div
           style={{
             display: "flex",
@@ -33,6 +38,7 @@ export default function BeerForProductList() {
             flexGrow: "2",
             width: "100%",
             color: "#FAEBDE",
+            gap: "10px",
           }}
         >
           <div
@@ -41,15 +47,23 @@ export default function BeerForProductList() {
               flexDirection: "row",
             }}
           >
-            <h2>Beer</h2>
+            <h2
+              style={{
+                fontSize: "1.2rem",
+              }}
+            >
+              {info.name}
+            </h2>
             <div
               style={{
                 textAlign: "center",
                 borderRadius: "50%",
                 background: "#FAEBDE",
+                fontWeight: "bold",
                 color: "#0D0601",
                 width: "25px",
                 height: "25px",
+                margin: "-3px 0 0 5px",
               }}
             >
               i

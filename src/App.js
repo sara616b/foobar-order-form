@@ -1,11 +1,9 @@
 import "./App.css";
 import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 import { useState, useEffect } from "react";
-import BeerForProductList from "./BeerForProductList";
 import Header from "./Header";
 import Footer from "./Footer";
 import BackButton from "./BackButton";
-import Button from "./Button";
 import ProductView from "./ProductView";
 import BasketView from "./BasketView";
 import PaymentView from "./PaymentView";
@@ -24,6 +22,7 @@ function App() {
 
   console.log(beerTypes);
 
+  const copy = [...beerTypes];
   return (
     <Router>
       <div
@@ -49,7 +48,11 @@ function App() {
         <BackButton></BackButton>
         <main>
           <Switch>
-            <Route path="/" exact render={() => <ProductView></ProductView>} />
+            <Route
+              path="/"
+              exact
+              render={() => <ProductView beerTypes={copy}></ProductView>}
+            />
             <Route path="/basket" render={() => <BasketView></BasketView>} />
             <Route path="/payment" render={() => <PaymentView></PaymentView>} />
             <Route

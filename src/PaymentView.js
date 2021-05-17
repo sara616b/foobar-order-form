@@ -3,7 +3,7 @@ import Button from "./Button";
 
 export default function PaymentView() {
   return (
-    <section>
+    <section className="placeContent">
 
       <h1>Add payment details and review order</h1>
 
@@ -41,11 +41,11 @@ export default function PaymentView() {
         <label htmlFor="expirationDate"> Expiration date
 
           <input 
-          type="date" 
+          type="text" 
           name="expirationDate" 
           id="expirationDate"
           autocomplete="xyz" 
-          value="2021-06-04"
+          placeholder="2021-06-04"
           min="2021-01-01" max="2028-12-31"/>
 
         </label>
@@ -82,9 +82,10 @@ export default function PaymentView() {
         style={{
           background: "#F69335",
           border: "3px solid #FFFFFF",
-          padding: "20px",
+          padding: "10px",
           boxSizing: "border-box",
           boxShadow: "0px 4px 11px rgba(0, 0, 0, 0.51)",
+          fontSize: "16px",
         }}
       ></Button>
 

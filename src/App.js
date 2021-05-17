@@ -72,6 +72,7 @@ function App() {
           gridGap: "20px",
         }}
       >
+        <div className="background"></div>
         <Header basket={basket}></Header>
         <nav
           style={{

@@ -1,7 +1,8 @@
-import { useState } from "react";
-
-export default function BeerForProductList({ info, addToBasket }) {
-  const [amount, setAmount] = useState(1);
+export default function BeerForBasketView({
+  info,
+  removeFromBasket,
+  updateAmountInBasket,
+}) {
   return (
     <article
       style={{
@@ -21,10 +22,10 @@ export default function BeerForProductList({ info, addToBasket }) {
       >
         <div
           style={{
-            flexBasis: "100px",
-            flexGrow: "1",
+            flexBasis: "150px",
+            flexGrow: "2",
             color: "white",
-            width: "100px",
+            width: "150px",
             backgroundImage: "url('./images/" + info.label + "')",
             backgroundSize: "cover",
             backgroundRepeat: "no-repeat",
@@ -60,7 +61,7 @@ export default function BeerForProductList({ info, addToBasket }) {
             >
               {info.name}
             </h2>
-            <div
+            <button
               style={{
                 textAlign: "center",
                 borderRadius: "50%",
@@ -70,10 +71,13 @@ export default function BeerForProductList({ info, addToBasket }) {
                 width: "25px",
                 height: "25px",
                 margin: "-3px 0 0 5px",
+                border: "none",
               }}
+              text="x"
+              onClick={() => removeFromBasket(info)}
             >
-              i
-            </div>
+              x
+            </button>
           </div>
           <div>
             <p
@@ -84,7 +88,7 @@ export default function BeerForProductList({ info, addToBasket }) {
                 fontSize: "18px",
               }}
             >
-              25 kr/stk
+              {"Subtotal: " + info.amount * 25 + " kr."}
             </p>
           </div>
           <div
@@ -105,10 +109,8 @@ export default function BeerForProductList({ info, addToBasket }) {
                 width: "40px",
                 height: "20px",
               }}
-              onClick={() => {
-                setAmount((prevState) => (prevState -= 1));
-              }}
-              disabled={amount === 1}
+              onClick={() => updateAmountInBasket(info, "-")}
+              disabled={info.amount === 1}
             >
               -
             </button>
@@ -121,7 +123,7 @@ export default function BeerForProductList({ info, addToBasket }) {
                 lineHeight: "23px",
               }}
             >
-              {amount}
+              {info.amount}
             </p>
             <button
               style={{
@@ -133,36 +135,13 @@ export default function BeerForProductList({ info, addToBasket }) {
                 width: "40px",
                 height: "20px",
               }}
-              onClick={() => {
-                setAmount((prevState) => (prevState += 1));
-              }}
+              onClick={() => updateAmountInBasket(info, "+")}
             >
               +
             </button>
           </div>
         </div>
       </div>
-      <button
-        style={{
-          width: "100%",
-          fontFamily: "Roboto",
-          fontStyle: "normal",
-          fontWeight: "normal",
-          fontSize: "15px",
-          textAlign: "center",
-          padding: "15px",
-          background: "white",
-          border: "3px solid #C9802F",
-          boxSizing: "border-box",
-          boxShadow: "0px 4px 11px rgba(0, 0, 0, 0.51)",
-        }}
-        onClick={() => {
-          info.amount = amount;
-          addToBasket(info);
-        }}
-      >
-        Add To Basket
-      </button>
     </article>
   );
 }

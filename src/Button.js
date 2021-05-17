@@ -1,3 +1,7 @@
-export default function Button({ text, style }) {
-  return <button style={style}>{text}</button>;
+export default function Button({ text, style, onClick }) {
+  return (
+    <button style={style} onClick={onClick}>
+      {text}
+    </button>
+  );
 }

@@ -82,3 +82,44 @@ input:invalid:not(:placeholder-shown, :focus) + .error {
   overflow: hidden;
   transition: 0.3s max-height;
 }
+
+/* Footer */
+
+footer {
+  background-color: #1c1c1c;
+  padding-top: 20px;
+}
+
+.overlay {
+  display: grid;
+  grid-template-columns: 2;
+  place-content: center;
+  justify-content: space-between;
+  background: linear-gradient(
+    180deg,
+    rgba(255, 255, 255, 0) 0%,
+    rgba(0, 0, 0, 0.35) 100%
+  );
+}
+
+.contact {
+  padding: 10px 0 20px 0;
+  display: grid;
+  grid-column: 1;
+  margin-left: 5rem;
+}
+
+.adress {
+  padding: 10px 0 20px 0;
+  display: grid;
+  grid-column: 2;
+  margin-right: 5rem;
+}
+
+.contact > p {
+  float: left;
+}
+
+.adress > p {
+  float: right;
+}

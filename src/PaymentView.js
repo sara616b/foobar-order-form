@@ -7,6 +7,13 @@ export default function PaymentView() {
 
       <h1>Add payment details and review order</h1>
 
+      <h2>Order details</h2>
+
+      <BasketView/>
+
+      {/* <h2>Table number: <TableNumber/></h2> */}
+
+
       <form>
 
         <label htmlFor="cardNumber"> Card number
@@ -69,16 +76,9 @@ export default function PaymentView() {
 
         </label>
 
-      </form>
-
-      <h2>Order details</h2>
-
-      <BasketView/>
-
-      {/* <h2>Table number: <TableNumber/></h2> */}
-
-      <Button
+        <Button
         text="Place order"
+        type="submit"
         style={{
           background: "#F69335",
           border: "3px solid #FFFFFF",
@@ -86,8 +86,13 @@ export default function PaymentView() {
           boxSizing: "border-box",
           boxShadow: "0px 4px 11px rgba(0, 0, 0, 0.51)",
           fontSize: "16px",
+          width: "319px",
+          marginTop: "10px",
         }}
       ></Button>
+
+      </form>
+
 
     </section>
 

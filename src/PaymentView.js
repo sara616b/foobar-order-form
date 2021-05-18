@@ -81,7 +81,7 @@ export default function PaymentView() {
             id="nameOnCard"
             autocomplete="xyz"
             placeholder="Full name"
-            pattern="[^0-9]"
+            pattern="[a-zA-Z ]+"
           />
           <span class="error" id="err-name" aria-live="assertive">
             {" "}

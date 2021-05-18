@@ -1,6 +1,7 @@
 import BeerForBasketView from "./BeerForBasketView";
 import { Link } from "react-router-dom";
 import Button from "./Button";
+import RadioButton from "./RadioButton";
 
 export default function BasketView({
   basket,
@@ -9,13 +10,13 @@ export default function BasketView({
 }) {
   let totalPrice = 0;
   basket.map((product) => (totalPrice += product.amount * 25));
+  let paymentMethods = ["Credit Card", "MobilePay", "ApplePay", "Cash"];
 
   return (
     <div
       style={{
         display: "grid",
         gridGap: "20px",
-        margin: "10px",
       }}
     >
       {basket.length !== 0 ? (
@@ -33,7 +34,13 @@ export default function BasketView({
 
       <p>Total: {totalPrice} kr.</p>
       <p>Table number</p>
-      <p>Choose Payment Metode</p>
+
+      <h3>Choose Payment Method</h3>
+      <form>
+        {paymentMethods.map((element) => {
+          return <RadioButton text={element} name="payment"></RadioButton>;
+        })}
+      </form>
 
       <Link to="/payment">
         <Button

@@ -86,7 +86,6 @@ function App() {
           <Link to="/payment">Payment</Link>
           <Link to="/thanks">Thanks</Link>
         </nav>
-        <BackButton></BackButton>
         <main>
           <Switch>
             <Route
@@ -98,6 +97,8 @@ function App() {
                     margin: "10px",
                   }}
                 >
+                  <BackButton linkTo={"/"}></BackButton>
+
                   <ProductView
                     addToBasket={addToBasket}
                     beerTypes={copy}
@@ -122,17 +123,38 @@ function App() {
             <Route
               path="/basket"
               render={() => (
-                <BasketView
-                  basket={basket}
-                  removeFromBasket={removeFromBasket}
-                  updateAmountInBasket={updateAmountInBasket}
-                ></BasketView>
+                <div
+                  style={{
+                    margin: "10px",
+                  }}
+                >
+                  <BackButton linkTo={"/"}></BackButton>
+
+                  <BasketView
+                    basket={basket}
+                    removeFromBasket={removeFromBasket}
+                    updateAmountInBasket={updateAmountInBasket}
+                  ></BasketView>
+                </div>
               )}
             />
-            <Route path="/payment" render={() => <PaymentView></PaymentView>} />
+            <Route
+              path="/payment"
+              render={() => (
+                <div>
+                  <BackButton linkTo={"/basket"}></BackButton>
+                  <PaymentView></PaymentView>{" "}
+                </div>
+              )}
+            />
             <Route
               path="/thanks"
-              render={() => <ThankYouView></ThankYouView>}
+              render={() => (
+                <div>
+                  <BackButton linkTo={"/"} text={" to frontpage"}></BackButton>
+                  <ThankYouView></ThankYouView>
+                </div>
+              )}
             />
           </Switch>
         </main>

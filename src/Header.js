@@ -25,7 +25,6 @@ export default function Header({ basket }) {
             letterSpacing: "0.155em",
             color: "#FFFFFF",
             textShadow: "1px 1px 0px rgba(250, 235, 222, 0.21)",
-            borderTop: "white solid 2px",
           }}
         >
           FooBar

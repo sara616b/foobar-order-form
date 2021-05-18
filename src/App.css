@@ -9,7 +9,7 @@
 }
 
 .background {
-  position: fixed;
+  position: absolute;
   top: 0;
   left: 0;
   width: 100vw;
@@ -27,6 +27,21 @@
 header,
 nav {
   z-index: 1;
+}
+
+header h1::before {
+  border-top: white solid 2px;
+  width: 122px;
+  content: "";
+  position: absolute;
+  margin-left: 27px;
+}
+
+button:hover,
+a:hover,
+Link:hover {
+  opacity: 0.8;
+  cursor: pointer;
 }
 
 button:disabled {

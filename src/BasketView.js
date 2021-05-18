@@ -1,12 +1,14 @@
 import BeerForBasketView from "./BeerForBasketView";
 import { Link } from "react-router-dom";
-import Button from "./Button";
 import RadioButton from "./RadioButton";
 
 export default function BasketView({
   basket,
   removeFromBasket,
   updateAmountInBasket,
+  updateOrderData,
+  setTableNumber,
+  setPaymentMethod,
 }) {
   let totalPrice = 0;
   basket.map((product) => (totalPrice += product.amount * 25));
@@ -33,18 +35,45 @@ export default function BasketView({
       )}
 
       <p>Total: {totalPrice} kr.</p>
-      <p>Table number</p>
 
-      <h3>Choose Payment Method</h3>
-      <form>
+      <form onSubmit={(e) => updateOrderData(e)}>
+        <label htmlFor="tablenumber">
+          <h3>Tablenumber</h3>
+          <input
+            type="number"
+            name="tablenumber"
+            id="tablenumber"
+            placeholder="xx"
+            min="0"
+            max="100"
+            style={{
+              width: "100px",
+            }}
+            onChange={(e) => {
+              console.log(e.target.value);
+              setTableNumber(e.target.value);
+            }}
+          />
+          <span className="error" id="err-name" aria-live="assertive">
+            Must be a valid number
+          </span>
+        </label>
+
+        <h3>Choose Payment Method</h3>
         {paymentMethods.map((element) => {
-          return <RadioButton text={element} name="payment"></RadioButton>;
+          return (
+            <RadioButton
+              text={element}
+              name="payment"
+              key={element}
+              onChange={setPaymentMethod}
+            ></RadioButton>
+          );
         })}
       </form>
 
       <Link to="/payment">
-        <Button
-          text="Place Order"
+        <button
           style={{
             background: "#F69335",
             border: "5px solid #FAEBDE",
@@ -54,7 +83,9 @@ export default function BasketView({
             boxShadow: "0px 4px 11px rgba(0, 0, 0, 0.51)",
             width: "100%",
           }}
-        ></Button>
+        >
+          Go To Payment
+        </button>
       </Link>
     </div>
   );

@@ -13,6 +13,16 @@ import ThankYouView from "./ThankYouView";
 function App() {
   const [beerTypes, setBeerTypes] = useState([]);
   const [basket, setBasket] = useState([]);
+  const [tablenumber, setTableNumber] = useState(0);
+  const [orderInfo, setOrderInfo] = useState();
+  const [paymentMethod, setPaymentMethod] = useState("");
+
+  let myStorage = window.localStorage;
+  myStorage.clear();
+  myStorage.setItem("tablenumber", tablenumber);
+  myStorage.setItem("paymentMethod", paymentMethod);
+  myStorage.setItem("basket", JSON.stringify(orderInfo));
+  console.log(myStorage);
 
   useEffect(() => {
     fetch("https://foobar-vas.herokuapp.com/beertypes")
@@ -21,6 +31,14 @@ function App() {
         setBeerTypes(data);
       });
   }, []);
+
+  useEffect(() => {
+    let updatedOrder = basket.map((item) => {
+      let itemData = { name: item.name, amount: item.amount };
+      return itemData;
+    });
+    setOrderInfo(updatedOrder);
+  }, [basket]);
 
   function addToBasket(payload) {
     const inBasket = basket.findIndex((item) => item.name === payload.name);
@@ -134,6 +152,8 @@ function App() {
                     basket={basket}
                     removeFromBasket={removeFromBasket}
                     updateAmountInBasket={updateAmountInBasket}
+                    setTableNumber={setTableNumber}
+                    setPaymentMethod={setPaymentMethod}
                   ></BasketView>
                 </div>
               )}

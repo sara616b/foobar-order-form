@@ -14,21 +14,23 @@ export default function Header({ basket }) {
     >
       <div>Queue</div>
       <div>
-        <h1
-          style={{
-            fontFamily: "Rasa, serif",
-            fontStyle: "normal",
-            fontWeight: "300",
-            fontSize: "48px",
-            lineHeight: "58px",
-            textAlign: "center",
-            letterSpacing: "0.155em",
-            color: "#FFFFFF",
-            textShadow: "1px 1px 0px rgba(250, 235, 222, 0.21)",
-          }}
-        >
-          FooBar
-        </h1>
+        <Link to="/">
+          <h1
+            style={{
+              fontFamily: "Rasa, serif",
+              fontStyle: "normal",
+              fontWeight: "300",
+              fontSize: "48px",
+              lineHeight: "58px",
+              textAlign: "center",
+              letterSpacing: "0.155em",
+              color: "#FFFFFF",
+              textShadow: "1px 1px 0px rgba(250, 235, 222, 0.21)",
+            }}
+          >
+            FooBar
+          </h1>
+        </Link>
       </div>
 
       <Link to="/basket">

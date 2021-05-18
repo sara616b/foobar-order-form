@@ -39,9 +39,12 @@ header h1::before {
 
 button:hover,
 a:hover,
-Link:hover {
+a:hover {
   opacity: 0.8;
   cursor: pointer;
+}
+header a {
+  text-decoration: none;
 }
 
 button:disabled {

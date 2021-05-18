@@ -5,6 +5,18 @@
 }
 .App {
   background-color: #0d0601;
+  color: white;
+}
+
+.background {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 150px;
+  z-index: 0;
+  background-color: #0d0601;
+  opacity: 0.25;
   background-image: url("./wood-medium.png");
   background-repeat: no-repeat;
   background-size: cover;
@@ -122,4 +134,31 @@ footer {
 
 .adress > p {
   float: right;
+}
+
+header,
+nav {
+  z-index: 1;
+}
+
+header h1::before {
+  border-top: white solid 2px;
+  width: 122px;
+  content: "";
+  position: absolute;
+  margin-left: 27px;
+}
+
+button:hover,
+a:hover,
+a:hover {
+  opacity: 0.8;
+  cursor: pointer;
+}
+header a {
+  text-decoration: none;
+}
+
+button:disabled {
+  opacity: 0.5;
 }

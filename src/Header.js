@@ -1,4 +1,8 @@
-export default function Header() {
+import { Link } from "react-router-dom";
+
+export default function Header({ basket }) {
+  let basketAmount = 0;
+  basket.map((product) => (basketAmount += product.amount));
   return (
     <header
       style={{
@@ -9,8 +13,29 @@ export default function Header() {
       }}
     >
       <div>Queue</div>
-      <div>Logo</div>
-      <div>Basket</div>
+      <div>
+        <Link to="/">
+          <h1
+            style={{
+              fontFamily: "Rasa, serif",
+              fontStyle: "normal",
+              fontWeight: "300",
+              fontSize: "48px",
+              lineHeight: "58px",
+              textAlign: "center",
+              letterSpacing: "0.155em",
+              color: "#FFFFFF",
+              textShadow: "1px 1px 0px rgba(250, 235, 222, 0.21)",
+            }}
+          >
+            FooBar
+          </h1>
+        </Link>
+      </div>
+
+      <Link to="/basket">
+        <div>Basket {basketAmount}</div>
+      </Link>
     </header>
   );
 }

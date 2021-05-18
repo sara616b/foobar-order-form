@@ -1,16 +1,56 @@
-import BasketView from "./BasketView";
-import Button from "./Button";
 
 export default function PaymentView() {
-  return (
-    <section className="placeContent">
-      <h1>Add payment details and review order</h1>
 
-      <h2>Order details</h2>
+  const form = document.querySelector("form");
 
-      {/* <h2>Table number: <TableNumber/></h2> */}
+  const submitHandler = e =>{
+    e.preventDefault()
+    post()
+  }
 
-      <form>
+  async function post() {
+
+    const postData = JSON.stringify({
+      cardNumber:form.elements.cardNumber.value,
+      nameOnCard:form.elements.nameOnCard.value,
+      expirationDate:form.elements.expirationDate.value,
+      cvv:form.elements.cvv.value,  
+    });
+
+/*     order:form.elements.order.value,
+    tableNumber:form.elements.tableNumber.value, */
+
+    const jsonData = await fetch("https://exsam3sem-dfd1.restdb.io/rest/beer", {
+
+        method: "post",
+        headers: {
+            "Content-Type": "application/json; charset=utf-8",
+            "x-apikey": "60990365e3b6e02545eda659",
+            "cache-control": "no-cache",
+          },
+        body: postData,
+    });
+
+    const jsonObject = await jsonData.json();
+
+    console.log(jsonObject);
+  };
+
+
+    return (
+
+      <section className="placeContent">
+
+        <h1>Add payment details and review order</h1>
+
+        <h2>Order details</h2>
+
+        {/* <BasketView /> */}
+
+        {/* <h2>Table number: <TableNumber/></h2> */}
+
+        <form onSubmit={submitHandler}>
+
         <label htmlFor="cardNumber">
           {" "}
           Card number
@@ -20,7 +60,16 @@ export default function PaymentView() {
             id="cardNumber"
             autocomplete="xyz"
             placeholder="XXXX-XXXX-XXXX-XXXX"
+            minLength="16"
+            maxLength="19"
+            min="0000 0000 0000 0000"
+            max="9999 9999 9999 9999"
           />
+          <span 
+          class="error" 
+          id="err-name" 
+          aria-live="assertive"> Can't be more or less than 16 numbers
+          </span>
         </label>
 
         <label htmlFor="nameOnCard">
@@ -66,26 +115,14 @@ export default function PaymentView() {
             max="999"
           />
           <span class="error" id="err-name" aria-live="assertive">
-            {" "}
             Must be a valid number
           </span>
         </label>
 
-        <Button
-          text="Place order"
-          type="submit"
-          style={{
-            background: "#F69335",
-            border: "3px solid #FFFFFF",
-            padding: "10px",
-            boxSizing: "border-box",
-            boxShadow: "0px 4px 11px rgba(0, 0, 0, 0.51)",
-            fontSize: "16px",
-            width: "319px",
-            marginTop: "10px",
-          }}
-        ></Button>
+        <button type="submit">Place order</button>
       </form>
     </section>
-  );
+
+    );
 }
+

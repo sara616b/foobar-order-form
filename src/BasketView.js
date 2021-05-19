@@ -9,7 +9,9 @@ export default function BasketView({
   updateOrderData,
   setTableNumber,
   setPaymentMethod,
+  paymentMethod,
 }) {
+  console.log(paymentMethod);
   let totalPrice = 0;
   basket.map((product) => (totalPrice += product.amount * 25));
   let paymentMethods = ["Credit Card", "MobilePay", "ApplePay", "Cash"];
@@ -19,20 +21,30 @@ export default function BasketView({
       style={{
         display: "grid",
         gridGap: "20px",
+        maxWidth: "1000px",
+        margin: "0 auto",
       }}
     >
-      {basket.length !== 0 ? (
-        basket.map((product) => (
-          <BeerForBasketView
-            info={product}
-            key={product.name}
-            removeFromBasket={removeFromBasket}
-            updateAmountInBasket={updateAmountInBasket}
-          ></BeerForBasketView>
-        ))
-      ) : (
-        <h2>Your basket is empty!</h2>
-      )}
+      <div
+        style={{
+          display: "grid",
+          gridGap: "20px",
+          gridTemplateColumns: "repeat(auto-fill, minmax(250px, 1fr))",
+        }}
+      >
+        {basket.length !== 0 ? (
+          basket.map((product) => (
+            <BeerForBasketView
+              info={product}
+              key={product.name}
+              removeFromBasket={removeFromBasket}
+              updateAmountInBasket={updateAmountInBasket}
+            ></BeerForBasketView>
+          ))
+        ) : (
+          <h2>Your basket is empty!</h2>
+        )}
+      </div>
 
       <p>Total: {totalPrice} kr.</p>
 
@@ -72,7 +84,7 @@ export default function BasketView({
         })}
       </form>
 
-      <Link to="/payment">
+      <Link to={paymentMethod === "Credit Card" ? "/payment" : "/thanks"}>
         <button
           style={{
             background: "#F69335",

@@ -23,6 +23,13 @@
   box-shadow: inset 0px -20px 29px #0d0601, inset 0px 56px 50px #0d0601;
   color: white;
 }
+.hidden {
+  display: none !important;
+}
+
+main {
+  max-width: 1000px;
+}
 
 /* Form */
 
@@ -164,5 +171,6 @@ header a {
 }
 
 button:disabled {
-  opacity: 0.5;
+  opacity: 0.6;
+  cursor: auto;
 }

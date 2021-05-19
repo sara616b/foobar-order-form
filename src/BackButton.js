@@ -5,6 +5,7 @@ export default function BackButton({ linkTo, text }) {
     <Link to={linkTo}>
       <button
         style={{
+          display: "grid",
           background: "none",
           border: "none",
           color: "white",
@@ -12,6 +13,8 @@ export default function BackButton({ linkTo, text }) {
           textAlign: "left",
           padding: "15px 0",
           width: "100%",
+          maxWidth: "1000px",
+          margin: "0 auto",
         }}
       >
         ← back{text}

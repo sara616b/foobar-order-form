@@ -12,6 +12,7 @@ import ThankYouView from "./ThankYouView";
 
 function App() {
   const [beerTypes, setBeerTypes] = useState([]);
+  const [taps, setTaps] = useState([]);
   const [basket, setBasket] = useState([]);
   const [tablenumber, setTableNumber] = useState(0);
   const [orderInfo, setOrderInfo] = useState();
@@ -29,6 +30,14 @@ function App() {
       .then((res) => res.json())
       .then((data) => {
         setBeerTypes(data);
+      });
+  }, []);
+
+  useEffect(() => {
+    fetch("https://foobar-vas.herokuapp.com/")
+      .then((res) => res.json())
+      .then((data) => {
+        setTaps(data.taps);
       });
   }, []);
 
@@ -58,14 +67,12 @@ function App() {
       setBasket(nextBasket);
     }
   }
-
   function removeFromBasket(payload) {
     //TODO - read up on to see if more correct way
     const itemToRemove = basket.findIndex((item) => item.name === payload.name);
     basket.splice(itemToRemove, 1);
     setBasket((prevState) => [...prevState]);
   }
-
   function updateAmountInBasket(payload, action) {
     const nextBasket = basket.map((item) => {
       if (item.name === payload.name) {
@@ -120,6 +127,7 @@ function App() {
                   <ProductView
                     addToBasket={addToBasket}
                     beerTypes={copy}
+                    taps={taps}
                   ></ProductView>
                   <Link to="/basket">
                     <Button
@@ -154,6 +162,7 @@ function App() {
                     updateAmountInBasket={updateAmountInBasket}
                     setTableNumber={setTableNumber}
                     setPaymentMethod={setPaymentMethod}
+                    paymentMethod={paymentMethod}
                   ></BasketView>
                 </div>
               )}

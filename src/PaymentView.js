@@ -1,24 +1,21 @@
-
-export default function PaymentView() {
-
-  const form = document.querySelector("form");
+export default function PaymentView({myStorage}) {
 
   const submitHandler = e =>{
     e.preventDefault()
-    post()
+    post(e.target)
   }
 
-  async function post() {
+  async function post(form) {
 
     const postData = JSON.stringify({
       cardNumber:form.elements.cardNumber.value,
       nameOnCard:form.elements.nameOnCard.value,
       expirationDate:form.elements.expirationDate.value,
-      cvv:form.elements.cvv.value,  
+      cvv:form.elements.cvv.value,
+      order:myStorage.getItem("basket"),
+      tableNumber:myStorage.getItem("tablenumber"),
+      paymentMethod:myStorage.getItem("paymentMethod"),
     });
-
-/*     order:form.elements.order.value,
-    tableNumber:form.elements.tableNumber.value, */
 
     const jsonData = await fetch("https://exsam3sem-dfd1.restdb.io/rest/beer", {
 
@@ -52,13 +49,12 @@ export default function PaymentView() {
         <form onSubmit={submitHandler}>
 
         <label htmlFor="cardNumber">
-          {" "}
           Card number
           <input
             type="text"
             name="cardNumber"
             id="cardNumber"
-            autocomplete="xyz"
+            autoComplete="xyz"
             placeholder="XXXX-XXXX-XXXX-XXXX"
             minLength="16"
             maxLength="19"
@@ -66,37 +62,34 @@ export default function PaymentView() {
             max="9999 9999 9999 9999"
           />
           <span 
-          class="error" 
+          className="error" 
           id="err-name" 
           aria-live="assertive"> Can't be more or less than 16 numbers
           </span>
         </label>
 
         <label htmlFor="nameOnCard">
-          {" "}
           Name on card
           <input
             type="text"
             name="nameOnCard"
             id="nameOnCard"
-            autocomplete="xyz"
+            autoComplete="xyz"
             placeholder="Full name"
             pattern="[a-zA-Z ]+"
           />
-          <span class="error" id="err-name" aria-live="assertive">
-            {" "}
+          <span className="error" id="err-name" aria-live="assertive">
             Can not contain numbers
           </span>
         </label>
 
         <label htmlFor="expirationDate">
-          {" "}
           Expiration date
           <input
             type="text"
             name="expirationDate"
             id="expirationDate"
-            autocomplete="xyz"
+            autoComplete="xyz"
             placeholder="2021-06-04"
             min="2021-01-01"
             max="2028-12-31"
@@ -104,7 +97,6 @@ export default function PaymentView() {
         </label>
 
         <label htmlFor="cvv">
-          {" "}
           CVV
           <input
             type="number"
@@ -114,7 +106,7 @@ export default function PaymentView() {
             min="000"
             max="999"
           />
-          <span class="error" id="err-name" aria-live="assertive">
+          <span className="error" id="err-name" aria-live="assertive">
             Must be a valid number
           </span>
         </label>

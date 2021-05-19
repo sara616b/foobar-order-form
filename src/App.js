@@ -172,7 +172,7 @@ function App() {
               render={() => (
                 <div>
                   <BackButton linkTo={"/basket"}></BackButton>
-                  <PaymentView></PaymentView>{" "}
+                  <PaymentView myStorage={myStorage}></PaymentView>
                 </div>
               )}
             />

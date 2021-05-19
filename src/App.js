@@ -12,7 +12,18 @@ import ThankYouView from "./ThankYouView";
 
 function App() {
   const [beerTypes, setBeerTypes] = useState([]);
+  const [taps, setTaps] = useState([]);
   const [basket, setBasket] = useState([]);
+  const [tablenumber, setTableNumber] = useState(0);
+  const [orderInfo, setOrderInfo] = useState();
+  const [paymentMethod, setPaymentMethod] = useState("");
+
+  let myStorage = window.localStorage;
+  myStorage.clear();
+  myStorage.setItem("tablenumber", tablenumber);
+  myStorage.setItem("paymentMethod", paymentMethod);
+  myStorage.setItem("basket", JSON.stringify(orderInfo));
+  console.log(myStorage);
 
   useEffect(() => {
     fetch("https://foobar-vas.herokuapp.com/beertypes")
@@ -21,6 +32,22 @@ function App() {
         setBeerTypes(data);
       });
   }, []);
+
+  useEffect(() => {
+    fetch("https://foobar-vas.herokuapp.com/")
+      .then((res) => res.json())
+      .then((data) => {
+        setTaps(data.taps);
+      });
+  }, []);
+
+  useEffect(() => {
+    let updatedOrder = basket.map((item) => {
+      let itemData = { name: item.name, amount: item.amount };
+      return itemData;
+    });
+    setOrderInfo(updatedOrder);
+  }, [basket]);
 
   function addToBasket(payload) {
     const inBasket = basket.findIndex((item) => item.name === payload.name);
@@ -40,14 +67,12 @@ function App() {
       setBasket(nextBasket);
     }
   }
-
   function removeFromBasket(payload) {
     //TODO - read up on to see if more correct way
     const itemToRemove = basket.findIndex((item) => item.name === payload.name);
     basket.splice(itemToRemove, 1);
     setBasket((prevState) => [...prevState]);
   }
-
   function updateAmountInBasket(payload, action) {
     const nextBasket = basket.map((item) => {
       if (item.name === payload.name) {
@@ -102,6 +127,7 @@ function App() {
                   <ProductView
                     addToBasket={addToBasket}
                     beerTypes={copy}
+                    taps={taps}
                   ></ProductView>
                   <Link to="/basket">
                     <Button
@@ -134,6 +160,9 @@ function App() {
                     basket={basket}
                     removeFromBasket={removeFromBasket}
                     updateAmountInBasket={updateAmountInBasket}
+                    setTableNumber={setTableNumber}
+                    setPaymentMethod={setPaymentMethod}
+                    paymentMethod={paymentMethod}
                   ></BasketView>
                 </div>
               )}

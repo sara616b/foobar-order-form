@@ -21,6 +21,13 @@
   box-shadow: inset 0px -20px 29px #0d0601, inset 0px 56px 50px #0d0601;
   color: white;
 }
+.hidden {
+  display: none !important;
+}
+
+main {
+  max-width: 1000px;
+}
 
 /* Form */
 
@@ -42,7 +49,8 @@ label {
   position: static;
 }
 
-input {
+input[type="text"],
+input[type="number"] {
   padding: 20px;
   width: 319px;
   height: 40px;
@@ -75,7 +83,8 @@ input[type="number"] {
 
 /* Error */
 
-input:valid:not(:placeholder-shown, :focus) {
+input[type="text"]:valid:not(:placeholder-shown, :focus),
+input[type="number"]:valid:not(:placeholder-shown, :focus) {
   border-color: greenyellow;
 
   background-position: right 16px center;
@@ -84,7 +93,8 @@ input:valid:not(:placeholder-shown, :focus) {
   background-image: url("data:image/svg+xml;charset=UTF-8,<svg xmlns='http://www.w3.org/2000/svg' width='20' height='20' viewBox='0 0 20 20'><g fill='none' fill-rule='evenodd'><circle cx='10' cy='10' r='10' fill='greenyellow'/><path stroke='%23ffffff' stroke-width='2' stroke-miterlimit='10' fill='none'  d='M 16.5 5  l -8 10  l -5 -6'></path></g></svg>");
 }
 
-input:invalid:not(:placeholder-shown, :focus) {
+input[type="text"]:invalid:not(:placeholder-shown, :focus),
+input[type="number"]:invalid:not(:placeholder-shown, :focus) {
   border-color: red;
 
   background-position: right 16px center;
@@ -93,7 +103,8 @@ input:invalid:not(:placeholder-shown, :focus) {
   background-image: url("data:image/svg+xml;charset=UTF-8,<svg xmlns='http://www.w3.org/2000/svg' width='20' height='20' viewBox='0 0 20 20'><g fill='none' fill-rule='evenodd'><circle cx='10' cy='10' r='10' fill='red'/><path fill='%23FFFFFF' d='M9,6.84848485 C9,5.93939394 9.4,5.33333333 10,5.33333333 C10.6,5.33333333 11,5.93939394 11,6.84848485 L11,10.4848485 C11,11.3939394 10.6,12 10,12 C9.4,12 9,11.3939394 9,10.4848485 L9,6.84848485 Z M10,14.6666667 C9.41666667,14.6666667 9,14.25 9,13.6666667 C9,13.0833333 9.41666667,12.6666667 10,12.6666667 C10.5833333,12.6666667 11,13.0833333 11,13.6666667 C11,14.25 10.5833333,14.6666667 10,14.6666667 L10,14.6666667 Z'/></g></svg>");
 }
 
-input:invalid:not(:placeholder-shown, :focus) + .error {
+input[type="text"]:invalid:not(:placeholder-shown, :focus) + .error,
+input[type="number"]:invalid:not(:placeholder-shown, :focus) + .error {
   max-height: 2rem;
 }
 
@@ -169,5 +180,6 @@ header a {
 }
 
 button:disabled {
-  opacity: 0.5;
+  opacity: 0.6;
+  cursor: auto;
 }

@@ -1,7 +1,10 @@
 import { useState } from "react";
 
-export default function BeerForProductList({ info, addToBasket }) {
+export default function BeerForProductList({ info, addToBasket, taps }) {
   const [amount, setAmount] = useState(1);
+
+  const beersOnTap = taps.map((tap) => tap.beer);
+  const soldOut = beersOnTap.indexOf(info.name) === -1 ? true : false;
   return (
     <article
       style={{
@@ -94,6 +97,7 @@ export default function BeerForProductList({ info, addToBasket }) {
               justifyContent: "space-between",
               alignItems: "center",
             }}
+            className={soldOut ? "hidden" : ""}
           >
             <button
               style={{
@@ -160,8 +164,9 @@ export default function BeerForProductList({ info, addToBasket }) {
           info.amount = amount;
           addToBasket(info);
         }}
+        disabled={soldOut}
       >
-        Add To Basket
+        {soldOut ? "Not On Tap" : "Add To Basket"}
       </button>
     </article>
   );

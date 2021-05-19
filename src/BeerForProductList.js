@@ -97,7 +97,7 @@ export default function BeerForProductList({ info, addToBasket, taps }) {
               justifyContent: "space-between",
               alignItems: "center",
             }}
-            className={soldOut ? "hidden" : ""}
+            className={soldOut ? "soldout" : ""}
           >
             <button
               style={{
@@ -112,7 +112,7 @@ export default function BeerForProductList({ info, addToBasket, taps }) {
               onClick={() => {
                 setAmount((prevState) => (prevState -= 1));
               }}
-              disabled={amount === 1}
+              disabled={amount === 1 || soldOut}
             >
               -
             </button>
@@ -140,6 +140,7 @@ export default function BeerForProductList({ info, addToBasket, taps }) {
               onClick={() => {
                 setAmount((prevState) => (prevState += 1));
               }}
+              disabled={soldOut}
             >
               +
             </button>
@@ -148,7 +149,6 @@ export default function BeerForProductList({ info, addToBasket, taps }) {
       </div>
       <button
         style={{
-          width: "100%",
           fontFamily: "Roboto",
           fontStyle: "normal",
           fontWeight: "normal",
@@ -159,6 +159,7 @@ export default function BeerForProductList({ info, addToBasket, taps }) {
           border: "3px solid #C9802F",
           boxSizing: "border-box",
           boxShadow: "0px 4px 11px rgba(0, 0, 0, 0.51)",
+          width: "100%",
         }}
         onClick={() => {
           info.amount = amount;

@@ -129,20 +129,29 @@ function App() {
                     beerTypes={copy}
                     taps={taps}
                   ></ProductView>
-                  <Link to="/basket">
-                    <Button
-                      text="View Basket"
-                      style={{
-                        background: "#F69335",
-                        border: "5px solid #FAEBDE",
-                        padding: "20px",
-                        margin: "10px 0",
-                        boxSizing: "border-box",
-                        boxShadow: "0px 4px 11px rgba(0, 0, 0, 0.51)",
-                        width: "100%",
-                      }}
-                    ></Button>
-                  </Link>
+                  <div
+                    style={{
+                      display: "grid",
+
+                      width: "60%",
+                      margin: "10px auto",
+                      minWidth: "150px",
+                    }}
+                  >
+                    <Link to="/basket">
+                      <Button
+                        text="View Basket"
+                        style={{
+                          background: "#F69335",
+                          border: "5px solid #FAEBDE",
+                          padding: "20px",
+                          boxSizing: "border-box",
+                          boxShadow: "0px 4px 11px rgba(0, 0, 0, 0.51)",
+                          width: "100%",
+                        }}
+                      ></Button>
+                    </Link>
+                  </div>
                 </div>
               )}
             />

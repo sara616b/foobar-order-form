@@ -4,7 +4,7 @@ export default function BeerForProductList({
   info,
   addToBasket,
   taps,
-  openPopUp,
+  togglePopup,
 }) {
   const [amount, setAmount] = useState(1);
 
@@ -78,8 +78,9 @@ export default function BeerForProductList({
                 width: "25px",
                 height: "25px",
                 margin: "-3px 0 0 5px",
+                cursor: "pointer",
               }}
-              onClick={openPopUp(info.name)}
+              onClick={(e) => togglePopup(info)}
             >
               i
             </div>

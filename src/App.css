@@ -9,7 +9,6 @@ body {
 .App {
   background-color: #0d0601;
   color: white;
-  max-width: 1000px;
   margin: auto;
 }
 
@@ -137,11 +136,7 @@ footer {
   );
 }
 
-.contact {
-  padding: 20px;
-  display: grid;
-}
-
+.contact,
 .adress {
   padding: 20px;
   display: grid;
@@ -154,6 +149,8 @@ footer {
 .adress > p {
   float: right;
 }
+
+/* Random */
 
 header,
 nav {
@@ -187,4 +184,30 @@ button:disabled {
 .tableNumber {
   display: inline;
   color: #f69335;
+}
+
+.textAlign {
+  text-align: center;
+}
+
+.colorOrange {
+  color: #f69335;
+}
+
+.placeText {
+  display: grid;
+  place-content: center;
+  gap: 20px;
+  padding: 20px;
+  max-width: 390px;
+  margin: auto;
+}
+
+.placeButton {
+  display: grid;
+}
+
+.bigText {
+  font-size: 40px;
+  margin-bottom: 15px;
 }

@@ -6,7 +6,7 @@ export default function BeerForBasketView({
   return (
     <article
       style={{
-        padding: "15px",
+        padding: "10px",
         background: "#0D0601",
         border: "1px solid #FFFFFF",
         boxSizing: "border-box",
@@ -22,10 +22,10 @@ export default function BeerForBasketView({
       >
         <div
           style={{
-            flexBasis: "150px",
+            flexBasis: "100px",
             flexGrow: "2",
             color: "white",
-            width: "150px",
+            width: "100px",
             backgroundImage: "url('./images/" + info.label + "')",
             backgroundSize: "cover",
             backgroundRepeat: "no-repeat",
@@ -37,7 +37,7 @@ export default function BeerForBasketView({
             display: "flex",
             flexDirection: "column",
             flexBasis: "200px",
-            flexGrow: "2",
+            flexGrow: "4",
             width: "100%",
             color: "white",
             gap: "10px",
@@ -95,8 +95,6 @@ export default function BeerForBasketView({
             style={{
               display: "flex",
               flexDirection: "row",
-              justifyContent: "space-between",
-              alignItems: "center",
             }}
           >
             <button
@@ -121,6 +119,7 @@ export default function BeerForBasketView({
                 fontWeight: "300",
                 fontSize: "20px",
                 lineHeight: "23px",
+                padding: "0 20px",
               }}
             >
               {info.amount}

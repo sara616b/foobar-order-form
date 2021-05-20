@@ -18,13 +18,6 @@ function App() {
   const [orderInfo, setOrderInfo] = useState();
   const [paymentMethod, setPaymentMethod] = useState("");
 
-  let myStorage = window.localStorage;
-  myStorage.clear();
-  myStorage.setItem("tablenumber", tablenumber);
-  myStorage.setItem("paymentMethod", paymentMethod);
-  myStorage.setItem("basket", JSON.stringify(orderInfo));
-  console.log(myStorage);
-
   useEffect(() => {
     fetch("https://foobar-vas.herokuapp.com/beertypes")
       .then((res) => res.json())
@@ -32,7 +25,6 @@ function App() {
         setBeerTypes(data);
       });
   }, []);
-
   useEffect(() => {
     fetch("https://foobar-vas.herokuapp.com/")
       .then((res) => res.json())
@@ -40,7 +32,6 @@ function App() {
         setTaps(data.taps);
       });
   }, []);
-
   useEffect(() => {
     let updatedOrder = basket.map((item) => {
       let itemData = { name: item.name, amount: item.amount };
@@ -99,18 +90,6 @@ function App() {
       >
         <div className="background"></div>
         <Header basket={basket}></Header>
-        <nav
-          style={{
-            display: "flex",
-            flexDirection: "row",
-            justifyContent: "space-around",
-          }}
-        >
-          <Link to="/">Shop</Link>
-          <Link to="/basket">Basket</Link>
-          <Link to="/payment">Payment</Link>
-          <Link to="/thanks">Thanks</Link>
-        </nav>
         <main>
           <Switch>
             <Route
@@ -163,8 +142,6 @@ function App() {
                     margin: "10px",
                   }}
                 >
-                  <BackButton linkTo={"/"}></BackButton>
-
                   <BasketView
                     basket={basket}
                     removeFromBasket={removeFromBasket}
@@ -180,8 +157,12 @@ function App() {
               path="/payment"
               render={() => (
                 <div>
-                  <BackButton linkTo={"/basket"}></BackButton>
-                  <PaymentView myStorage={myStorage}></PaymentView>
+                  <PaymentView
+                    tablenumber={tablenumber}
+                    orderInfo={orderInfo}
+                    paymentMethod={paymentMethod}
+                    basket={basket}
+                  ></PaymentView>
                 </div>
               )}
             />

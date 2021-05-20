@@ -20,6 +20,8 @@ body {
   z-index: 0;
   background-color: #0d0601;
   opacity: 0.25;
+  width: 100%;
+  height: 150px;
   background-image: url("./wood-medium.png");
   background-repeat: no-repeat;
   background-size: cover;
@@ -36,12 +38,9 @@ body {
   display: grid;
   place-content: center;
   gap: 20px;
-  background: linear-gradient(
-    180deg,
-    rgba(0, 0, 0, 0.8) 0%,
-    rgba(0, 0, 0, 1) 100%
-  );
   padding: 20px;
+  max-width: 800px;
+  margin: auto;
 }
 
 label {
@@ -53,10 +52,14 @@ label {
 input[type="text"],
 input[type="number"] {
   padding: 20px;
-  width: 319px;
+  width: 100%;
   height: 40px;
   border: 2px solid #d7b191;
   border-radius: 5px;
+}
+input[name="cvv"],
+input[name="expirationDate"] {
+  width: 150px;
 }
 
 form > button {
@@ -66,7 +69,7 @@ form > button {
   box-sizing: border-box;
   box-shadow: 0px 4px 11px rgba(0, 0, 0, 0.51);
   font-size: 16px;
-  width: 319px;
+  width: 100%;
   margin-top: 10px;
 }
 
@@ -120,14 +123,13 @@ input[type="number"]:invalid:not(:placeholder-shown, :focus) + .error {
 
 footer {
   background-color: #1c1c1c;
-  padding-top: 20px;
+  padding: 10px 0;
 }
 
 .overlay {
-  display: grid;
-  grid-template-columns: 2;
-  place-content: center;
-  justify-content: space-between;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
   background: linear-gradient(
     180deg,
     rgba(255, 255, 255, 0) 0%,
@@ -136,17 +138,13 @@ footer {
 }
 
 .contact {
-  padding: 10px 0 20px 0;
+  padding: 20px;
   display: grid;
-  grid-column: 1;
-  margin-left: 5rem;
 }
 
 .adress {
-  padding: 10px 0 20px 0;
+  padding: 20px;
   display: grid;
-  grid-column: 2;
-  margin-right: 5rem;
 }
 
 .contact > p {

@@ -1,6 +1,7 @@
 import BeerForBasketView from "./BeerForBasketView";
 import { Link } from "react-router-dom";
 import RadioButton from "./RadioButton";
+import BackButton from "./BackButton";
 
 export default function BasketView({
   basket,
@@ -9,9 +10,7 @@ export default function BasketView({
   updateOrderData,
   setTableNumber,
   setPaymentMethod,
-  paymentMethod,
 }) {
-  console.log(paymentMethod);
   let totalPrice = 0;
   basket.map((product) => (totalPrice += product.amount * 25));
   let paymentMethods = ["Credit Card", "MobilePay", "ApplePay", "Cash"];
@@ -21,15 +20,17 @@ export default function BasketView({
       style={{
         display: "grid",
         gridGap: "20px",
-        maxWidth: "1000px",
+        maxWidth: "600px",
         margin: "0 auto",
       }}
     >
+      <BackButton linkTo={"/"}></BackButton>
+      <h2>Your Basket</h2>
       <div
         style={{
           display: "grid",
-          gridGap: "20px",
-          gridTemplateColumns: "repeat(auto-fill, minmax(250px, 1fr))",
+          gridGap: "10px",
+          gridTemplateColumns: "repeat(auto-fill, minmax(100%, 1fr))",
         }}
       >
         {basket.length !== 0 ? (
@@ -62,7 +63,6 @@ export default function BasketView({
               width: "100px",
             }}
             onChange={(e) => {
-              console.log(e.target.value);
               setTableNumber(e.target.value);
             }}
           />
@@ -84,7 +84,7 @@ export default function BasketView({
         })}
       </form>
 
-      <Link to={paymentMethod === "Credit Card" ? "/payment" : "/thanks"}>
+      <Link to="/payment">
         <button
           style={{
             background: "#F69335",

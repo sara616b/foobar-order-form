@@ -11,7 +11,7 @@ export default function BackButton({ linkTo, text }) {
           color: "white",
           opacity: "0.9",
           textAlign: "left",
-          padding: "15px 0",
+          paddingBottom: "15px",
           width: "100%",
           maxWidth: "1000px",
           margin: "0 auto",

@@ -1,6 +1,11 @@
 import { useState } from "react";
 
-export default function BeerForProductList({ info, addToBasket, taps }) {
+export default function BeerForProductList({
+  info,
+  addToBasket,
+  taps,
+  openPopUp,
+}) {
   const [amount, setAmount] = useState(1);
 
   const beersOnTap = taps.map((tap) => tap.beer);
@@ -74,6 +79,7 @@ export default function BeerForProductList({ info, addToBasket, taps }) {
                 height: "25px",
                 margin: "-3px 0 0 5px",
               }}
+              onClick={openPopUp(info.name)}
             >
               i
             </div>

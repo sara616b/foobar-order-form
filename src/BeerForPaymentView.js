@@ -48,7 +48,6 @@ export default function BeerForPaymentView({ info }) {
                 fontFamily: "Roboto",
                 fontStyle: "normal",
                 fontWeight: "normal",
-                fontSize: "20px",
                 letterSpacing: "0.1em",
                 fontSize: "1rem",
               }}

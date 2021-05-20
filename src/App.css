@@ -62,7 +62,7 @@ input[name="expirationDate"] {
   width: 150px;
 }
 
-form > button {
+.formButton {
   background: #f69335;
   border: 3px solid #ffffff;
   padding: 10px;
@@ -181,4 +181,10 @@ header a {
 button:disabled {
   opacity: 0.6;
   cursor: auto;
+}
+
+.totalPrice,
+.tableNumber {
+  display: inline;
+  color: #f69335;
 }

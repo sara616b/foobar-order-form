@@ -1,5 +1,5 @@
 import BackButton from "./BackButton";
-import { Link } from "react-router-dom";
+import { Link, useHistory } from "react-router-dom";
 import BeerForPaymentView from "./BeerForPaymentView";
 
 export default function PaymentView({
@@ -8,15 +8,15 @@ export default function PaymentView({
   paymentMethod,
   basket,
 }) {
-
+  let history = useHistory();
   const submitHandler = (e) => {
     e.preventDefault();
     post(e.target);
+    history.push("/thanks");
   };
 
   let totalPrice = 0;
   basket.map((product) => (totalPrice += product.amount * 25));
-
 
   async function post(form) {
     const postData = JSON.stringify({
@@ -46,7 +46,6 @@ export default function PaymentView({
 
   return (
     <section className="placeContent">
-
       <BackButton linkTo={"/basket"}></BackButton>
 
       {paymentMethod === "Credit Card" ? (
@@ -72,13 +71,15 @@ export default function PaymentView({
                 ></BeerForPaymentView>
               ))
             ) : (
-
               <h2>Your basket is empty!</h2>
             )}
 
-            <h3>Total: <h3 className="totalPrice">{totalPrice} kr.</h3></h3>
-            <h3>Table number: <h3 className="tableNumber">{tablenumber}</h3></h3>
-
+            <h3>
+              Total: <span className="totalPrice">{totalPrice} kr.</span>
+            </h3>
+            <h3>
+              Table number: <span className="tableNumber">{tablenumber}</span>
+            </h3>
           </div>
 
           <form onSubmit={submitHandler}>
@@ -95,7 +96,6 @@ export default function PaymentView({
                 min="0000 0000 0000 0000"
                 max="9999 9999 9999 9999"
               />
-
               <span className="error" id="err-name" aria-live="assertive">
                 Can't be more or less than 16 numbers
               </span>
@@ -144,22 +144,19 @@ export default function PaymentView({
               </span>
             </label>
 
-            <button type="submit" className="formButton">Place order</button>
-
+            <button type="submit" className="formButton">
+              Place order
+            </button>
           </form>
         </div>
-
       ) : (
-
         <div>
-
           <h2>
             This is a prototype, so you won't be directed to your chosen payment
             method. Please click place order to move on
           </h2>
 
           <Link to="/thanks">
-
             <button
               style={{
                 background: "#F69335",
@@ -171,17 +168,11 @@ export default function PaymentView({
                 width: "100%",
               }}
             >
-
               Place Order
-
             </button>
-
           </Link>
-
         </div>
-
       )}
-
     </section>
   );
 }

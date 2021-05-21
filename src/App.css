@@ -213,3 +213,7 @@ button:disabled {
   font-size: 40px;
   margin-bottom: 15px;
 }
+
+.hide {
+  display: none;
+}

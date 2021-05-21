@@ -14,6 +14,8 @@ export default function BackButton({ linkTo, text }) {
           paddingBottom: "15px",
           width: "100%",
           paddingLeft: "10px",
+          maxWidth: "1000px",
+          margin: "auto",
         }}
       >
         ← back{text}

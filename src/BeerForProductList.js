@@ -17,6 +17,9 @@ export default function BeerForProductList({
         background: "#0D0601",
         border: "1px solid #FFFFFF",
         boxSizing: "border-box",
+        display: "flex",
+        flexDirection: "column",
+        justifyContent: "space-between",
       }}
     >
       <div
@@ -25,6 +28,7 @@ export default function BeerForProductList({
           flexDirection: "row",
           justifyContent: "space-between",
           marginBottom: "10px",
+          height: "100%",
         }}
       >
         <div
@@ -37,6 +41,8 @@ export default function BeerForProductList({
             backgroundSize: "cover",
             backgroundRepeat: "no-repeat",
             marginRight: "10px",
+            minHeight: "100px",
+            height: "100%",
           }}
         ></div>
         <div
@@ -48,6 +54,7 @@ export default function BeerForProductList({
             width: "100%",
             color: "white",
             gap: "10px",
+            justifyContent: "space-between",
           }}
         >
           <div
@@ -69,6 +76,7 @@ export default function BeerForProductList({
               {info.name}
             </h2>
             <div
+              className="infoButton"
               style={{
                 textAlign: "center",
                 borderRadius: "50%",

@@ -80,7 +80,9 @@ function App() {
 
   const copy = [...beerTypes];
   return (
-    <Router>
+    <Router
+    // basename="/kea/frontend/foobar"
+    >
       <div
         className="App"
         style={{

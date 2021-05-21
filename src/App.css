@@ -170,7 +170,8 @@ header h1::before {
 
 button:hover,
 a:hover,
-a:hover {
+a:hover,
+.infoButton:hover {
   opacity: 0.8;
   cursor: pointer;
 }

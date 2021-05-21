@@ -6,10 +6,31 @@ export default function BeerForProductList({
   taps,
   togglePopup,
 }) {
+
   const [amount, setAmount] = useState(1);
 
   const beersOnTap = taps.map((tap) => tap.beer);
   const soldOut = beersOnTap.indexOf(info.name) === -1 ? true : false;
+
+  function moveAnime(e) {
+
+    console.log(e)
+
+    e.style.backgroundColor = "black";
+    e.style.color = "white";
+    e.style.fontWeight = "bold";
+    e.innerHTML = "Added";
+
+    setTimeout( () => {
+
+      e.style.backgroundColor = "white";
+      e.style.color = "black";
+      e.style.fontWeight = "normal";
+      e.innerHTML = "Add To Basket";
+
+    }, 1000);
+  }
+
   return (
     <article
       style={{
@@ -175,9 +196,10 @@ export default function BeerForProductList({
           boxShadow: "0px 4px 11px rgba(0, 0, 0, 0.51)",
           width: "100%",
         }}
-        onClick={() => {
+        onClick={(e) => {
           info.amount = amount;
           addToBasket(info);
+          moveAnime(e.target);
         }}
         disabled={soldOut}
       >

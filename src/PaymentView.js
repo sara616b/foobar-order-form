@@ -27,6 +27,7 @@ export default function PaymentView({
       order: orderInfo,
       tableNumber: tablenumber,
       paymentMethod: paymentMethod,
+      pris: totalPrice,
     });
 
     const jsonData = await fetch("https://exsam3sem-dfd1.restdb.io/rest/beer", {
@@ -42,6 +43,20 @@ export default function PaymentView({
     const jsonObject = await jsonData.json();
 
     console.log(jsonObject);
+    postToHeroku();
+  }
+
+  function postToHeroku() {
+    const postData = JSON.stringify(orderInfo);
+    console.log(postData);
+
+    fetch("https://foobar-vas.herokuapp.com/order", {
+      method: "post",
+      headers: {
+        "Content-Type": "application/json; charset=utf-8",
+      },
+      body: postData,
+    });
   }
 
   return (

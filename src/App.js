@@ -78,7 +78,15 @@ function App() {
     setBasket(nextBasket);
   }
 
-  const copy = [...beerTypes];
+  const beersOnTap = taps.map((tap) => tap.beer);
+  let copy = beerTypes.map((item) => {
+    item["isSoldOut"] = beersOnTap.indexOf(item.name) === -1 ? true : false;
+    return item;
+  });
+  copy.sort((a, b) => {
+    return a.isSoldOut - b.isSoldOut;
+  });
+
   return (
     <Router
     // basename="/kea/frontend/foobar"
@@ -100,7 +108,9 @@ function App() {
               render={() => (
                 <div
                   style={{
-                    margin: "10px",
+                    margin: "auto",
+                    padding: "10px",
+                    maxWidth: "1000px",
                   }}
                 >
                   <BackButton linkTo={"/"}></BackButton>
@@ -113,7 +123,6 @@ function App() {
                   <div
                     style={{
                       display: "grid",
-
                       width: "60%",
                       margin: "10px auto",
                       minWidth: "150px",

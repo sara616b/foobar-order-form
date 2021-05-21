@@ -35,7 +35,6 @@ export default function ProductView({ addToBasket, beerTypes, taps }) {
         width: "100%",
         margin: "auto",
         gridTemplateColumns: "repeat(auto-fill, minmax(250px, 1fr))",
-        maxWidth: "1000px",
       }}
     >
       {beerTypes.map((product) => (

@@ -23,11 +23,9 @@ export default function BeerForBasketView({
         <div
           style={{
             flexBasis: "100px",
-            flexGrow: "2",
             color: "white",
-            width: "100px",
             backgroundImage: "url('./images/" + info.label + "')",
-            backgroundSize: "cover",
+            backgroundSize: "contain",
             backgroundRepeat: "no-repeat",
             marginRight: "10px",
           }}

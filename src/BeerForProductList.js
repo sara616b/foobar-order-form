@@ -54,8 +54,8 @@ export default function BeerForProductList({
       >
         <div
           style={{
-            flexBasis: "100px",
-            flexGrow: "1",
+            flexBasis: "130px",
+            flexGrow: "2",
             color: "white",
             width: "100px",
             backgroundImage: "url('./images/" + info.label + "')",

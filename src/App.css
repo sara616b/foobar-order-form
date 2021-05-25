@@ -218,6 +218,10 @@ button:disabled {
   display: none;
 }
 
+div[key="Overall Impression: "] {
+  padding: 5px 0 20px 0;
+}
+
 /* Pay icons */
 input[name="payment"] + label {
   display: flex !important;

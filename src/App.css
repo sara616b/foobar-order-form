@@ -219,23 +219,10 @@ button:disabled {
 }
 
 /* Pay icons */
-
-.creditCard {
-  position: absolute;
-  margin: 25rem 0 0 7.5rem;
+input[name="payment"] + label {
+  display: flex !important;
+  flex-direction: row;
 }
-
-.mobile {
-  position: absolute;
-  margin: 26.3rem 0 0 7.6rem;
-}
-
-.apple {
-  position: absolute;
-  margin: 26.6rem 0 0 7.2rem;
-}
-
-.cash {
-  position: absolute;
-  margin: 29.3rem 0 0 7.5rem;
+input[name="payment"] + label svg {
+  height: 15px;
 }

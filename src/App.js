@@ -18,7 +18,6 @@ function App() {
   const [orderInfo, setOrderInfo] = useState();
   const [paymentMethod, setPaymentMethod] = useState("");
   const [queueLenght, setQueueLenght] = useState(0);
-
   useEffect(() => {
     fetch("https://foobar-vas.herokuapp.com/beertypes")
       .then((res) => res.json())
@@ -39,7 +38,7 @@ function App() {
       .then((data) => {
         setQueueLenght(data.queue.length);
       });
-  }, [queueLenght]);
+  }, [basket]);
   useEffect(() => {
     let updatedOrder = basket.map((item) => {
       let itemData = { name: item.name, amount: item.amount };

@@ -6,28 +6,22 @@ export default function BeerForProductList({
   taps,
   togglePopup,
 }) {
-
   const [amount, setAmount] = useState(1);
 
   const beersOnTap = taps.map((tap) => tap.beer);
   const soldOut = beersOnTap.indexOf(info.name) === -1 ? true : false;
 
   function moveAnime(e) {
-
-    console.log(e)
-
     e.style.backgroundColor = "black";
     e.style.color = "white";
     e.style.fontWeight = "bold";
     e.innerHTML = "Added";
 
-    setTimeout( () => {
-
+    setTimeout(() => {
       e.style.backgroundColor = "white";
       e.style.color = "black";
       e.style.fontWeight = "normal";
       e.innerHTML = "Add To Basket";
-
     }, 1000);
   }
 

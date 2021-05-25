@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 
-export default function Header({ basket }) {
+export default function Header({ basket, queueLenght }) {
   let basketAmount = 0;
   basket.map((product) => (basketAmount += product.amount));
   return (
@@ -17,7 +17,7 @@ export default function Header({ basket }) {
           width: "25%",
           maxWidth: "90px",
           display: "flex",
-          flexDirection: "column",
+          flexDirection: "row",
         }}
       >
         <svg
@@ -72,9 +72,10 @@ export default function Header({ basket }) {
         <p
           style={{
             fontSize: "0.8rem",
+            paddingTop: "10px",
           }}
         >
-          7 min
+          x {queueLenght}
         </p>
       </div>
       <div>

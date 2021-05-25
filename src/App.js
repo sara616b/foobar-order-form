@@ -17,6 +17,7 @@ function App() {
   const [tablenumber, setTableNumber] = useState(0);
   const [orderInfo, setOrderInfo] = useState();
   const [paymentMethod, setPaymentMethod] = useState("");
+  const [queueLenght, setQueueLenght] = useState(0);
 
   useEffect(() => {
     fetch("https://foobar-vas.herokuapp.com/beertypes")
@@ -32,6 +33,13 @@ function App() {
         setTaps(data.taps);
       });
   }, []);
+  useEffect(() => {
+    fetch("https://foobar-vas.herokuapp.com/")
+      .then((res) => res.json())
+      .then((data) => {
+        setQueueLenght(data.queue.length);
+      });
+  }, [queueLenght]);
   useEffect(() => {
     let updatedOrder = basket.map((item) => {
       let itemData = { name: item.name, amount: item.amount };
@@ -78,6 +86,10 @@ function App() {
     setBasket(nextBasket);
   }
 
+  function clearBasket() {
+    setBasket([]);
+  }
+
   const beersOnTap = taps.map((tap) => tap.beer);
   let copy = beerTypes.map((item) => {
     item["isSoldOut"] = beersOnTap.indexOf(item.name) === -1 ? true : false;
@@ -99,7 +111,7 @@ function App() {
         }}
       >
         <div className="background"></div>
-        <Header basket={basket}></Header>
+        <Header basket={basket} queueLenght={queueLenght}></Header>
         <main>
           <Switch>
             <Route
@@ -173,6 +185,7 @@ function App() {
                     orderInfo={orderInfo}
                     paymentMethod={paymentMethod}
                     basket={basket}
+                    clearBasket={clearBasket}
                   ></PaymentView>
                 </div>
               )}

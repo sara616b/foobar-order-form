@@ -1,5 +1,5 @@
 import BackButton from "./BackButton";
-import { Link, useHistory } from "react-router-dom";
+import { useHistory } from "react-router-dom";
 import BeerForPaymentView from "./BeerForPaymentView";
 
 export default function PaymentView({
@@ -7,11 +7,16 @@ export default function PaymentView({
   orderInfo,
   paymentMethod,
   basket,
+  clearBasket,
 }) {
   let history = useHistory();
   const submitHandler = (e) => {
-    e.preventDefault();
-    post(e.target);
+    if (e !== undefined) {
+      e.preventDefault();
+      post(e.target);
+    }
+    postToHeroku();
+    clearBasket();
     history.push("/thanks");
   };
 
@@ -29,7 +34,6 @@ export default function PaymentView({
       paymentMethod: paymentMethod,
       pris: totalPrice,
     });
-
     const jsonData = await fetch("https://exsam3sem-dfd1.restdb.io/rest/beer", {
       method: "post",
       headers: {
@@ -43,7 +47,6 @@ export default function PaymentView({
     const jsonObject = await jsonData.json();
 
     console.log(jsonObject);
-    postToHeroku();
   }
 
   function postToHeroku() {
@@ -171,21 +174,20 @@ export default function PaymentView({
             method. Please click place order to move on
           </h2>
 
-          <Link to="/thanks">
-            <button
-              style={{
-                background: "#F69335",
-                border: "5px solid #FAEBDE",
-                padding: "20px",
-                margin: "10px 0",
-                boxSizing: "border-box",
-                boxShadow: "0px 4px 11px rgba(0, 0, 0, 0.51)",
-                width: "100%",
-              }}
-            >
-              Place Order
-            </button>
-          </Link>
+          <button
+            style={{
+              background: "#F69335",
+              border: "5px solid #FAEBDE",
+              padding: "20px",
+              margin: "10px 0",
+              boxSizing: "border-box",
+              boxShadow: "0px 4px 11px rgba(0, 0, 0, 0.51)",
+              width: "100%",
+            }}
+            onClick={() => submitHandler(undefined)}
+          >
+            Place Order
+          </button>
         </div>
       )}
     </section>

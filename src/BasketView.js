@@ -84,7 +84,7 @@ export default function BasketView({
         })}
       </form>
 
-      <Link to="/payment">
+      <Link to={basket.length > 0 ? "/payment" : ""}>
         <button
           style={{
             background: "#F69335",
@@ -95,8 +95,9 @@ export default function BasketView({
             boxShadow: "0px 4px 11px rgba(0, 0, 0, 0.51)",
             width: "100%",
           }}
+          disabled={basket.length === 0}
         >
-          Go To Payment
+          {basket.length > 0 ? "Go To Payment" : "Your basket is empty"}
         </button>
       </Link>
     </div>

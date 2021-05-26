@@ -64,7 +64,7 @@ export default function ProductView({ addToBasket, beerTypes, taps }) {
             style={{
               backgroundColor: "white",
               color: "black",
-              padding: "20px",
+              padding: "20px 20px 40px 20px",
               height: "100%",
               overflowY: "scroll",
             }}
@@ -96,7 +96,7 @@ export default function ProductView({ addToBasket, beerTypes, taps }) {
               <div
                 key={info.label}
                 style={{
-                  padding: "5px 0",
+                  padding: "5px 0 20px",
                 }}
               >
                 <h2

@@ -113,9 +113,11 @@ export default function PaymentView({
                 maxLength="19"
                 min="0000 0000 0000 0000"
                 max="9999 9999 9999 9999"
+                pattern="[a-zA-Z ]-"
+                required
               />
               <span className="error" id="err-name" aria-live="assertive">
-                Can't be more or less than 16 numbers
+                Can't be letters and must be 16 numbers
               </span>
             </label>
 
@@ -128,6 +130,7 @@ export default function PaymentView({
                 autoComplete="xyz"
                 placeholder="Full name"
                 pattern="[a-zA-Z ]+"
+                required
               />
               <span className="error" id="err-name" aria-live="assertive">
                 Can not contain numbers
@@ -142,9 +145,13 @@ export default function PaymentView({
                 id="expirationDate"
                 autoComplete="xyz"
                 placeholder="2021-06-04"
-                min="2021-01-01"
-                max="2028-12-31"
+                pattern="((?:20|20)[0-9]{2}-(?:(?:0[1-9]|1[0-2])-(?:0[1-9]|1[0-9]|2[0-9])|(?:(?!02)(?:0[1-9]|1[0-2])-(?:30))|(?:(?:0[13578]|1[02])-31))"
+                required
               />
+
+              <span className="error" id="err-name" aria-live="assertive">
+                The date must be between 2019 - 2028
+              </span>
             </label>
 
             <label htmlFor="cvv">
@@ -156,9 +163,10 @@ export default function PaymentView({
                 placeholder="XXX"
                 min="000"
                 max="999"
+                required
               />
               <span className="error" id="err-name" aria-live="assertive">
-                Must be a valid number
+                Can't be letters, must be 3 numbers long
               </span>
             </label>
 

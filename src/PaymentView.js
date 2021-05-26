@@ -113,7 +113,7 @@ export default function PaymentView({
                 maxLength="19"
                 min="0000 0000 0000 0000"
                 max="9999 9999 9999 9999"
-                pattern="[a-zA-Z ]-"
+                pattern="[0-9 ]{16,19}"
                 required
               />
               <span className="error" id="err-name" aria-live="assertive">

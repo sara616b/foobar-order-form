@@ -1,15 +1,15 @@
 import "./App.css";
-import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
+import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import { useState, useEffect } from "react";
 import Header from "./Header";
 import Footer from "./Footer";
-import Button from "./Button";
 import ProductView from "./ProductView";
 import BasketView from "./BasketView";
 import PaymentView from "./PaymentView";
 import ThankYouView from "./ThankYouView";
 
 function App() {
+  // variabler med usestate
   const [beerTypes, setBeerTypes] = useState([]);
   const [taps, setTaps] = useState([]);
   const [basket, setBasket] = useState([]);
@@ -18,6 +18,8 @@ function App() {
   const [paymentMethod, setPaymentMethod] = useState("");
   const [queueLenght, setQueueLenght] = useState(0);
   const [orderNumber, setOrderNumber] = useState(0);
+
+  // useEffects fetching data + updating variables
   useEffect(() => {
     fetch("https://foobar-vas.herokuapp.com/beertypes")
       .then((res) => res.json())
@@ -47,12 +49,12 @@ function App() {
     setOrderInfo(updatedOrder);
   }, [basket]);
 
+  // updating order number (used in paymentview)
   function updateOrderNumber(orderNumberValue) {
     setOrderNumber(orderNumberValue);
-
-    console.log(orderNumber);
   }
 
+  // updating basket functions
   function addToBasket(payload) {
     const inBasket = basket.findIndex((item) => item.name === payload.name);
     if (inBasket === -1) {
@@ -90,11 +92,11 @@ function App() {
     });
     setBasket(nextBasket);
   }
-
   function clearBasket() {
     setBasket([]);
   }
 
+  // which beers are on tap and set those that aren't to soldOut = true in a copy, that's sorted by onTap first
   const beersOnTap = taps.map((tap) => tap.beer);
   let copy = beerTypes.map((item) => {
     item["isSoldOut"] = beersOnTap.indexOf(item.name) === -1 ? true : false;
@@ -105,100 +107,41 @@ function App() {
   });
 
   return (
-    <Router
-    // basename="/kea/frontend/foobar"
-    >
-      <div
-        className="App"
-        style={{
-          display: "grid",
-          gridGap: "20px",
-        }}
-      >
+    <Router>
+      <div className="App">
+        {/* background styled with wooden texture */}
         <div className="background"></div>
+        {/* Generel content set up: HEADER + MAIN CONTENT pr ROUTE + FOOTER */}
         <Header basket={basket} queueLenght={queueLenght}></Header>
         <main>
           <Switch>
+            {/* Product page */}
             <Route
               path="/"
               exact
               render={() => (
-                <div
-                  style={{
-                    margin: "auto",
-                    padding: "10px",
-                    maxWidth: "1000px",
-                  }}
-                >
-                  <a href="http://skovgaart.dk/kea/foobar/index.html">
-                    <button
-                      style={{
-                        display: "grid",
-                        background: "none",
-                        border: "none",
-                        color: "white",
-                        opacity: "0.9",
-                        textAlign: "left",
-                        paddingBottom: "15px",
-                        width: "100%",
-                        paddingLeft: "10px",
-                        maxWidth: "1000px",
-                        margin: "auto",
-                      }}
-                    >
-                      ← back
-                    </button>
-                  </a>
-
-                  <ProductView
-                    addToBasket={addToBasket}
-                    beerTypes={copy}
-                    taps={taps}
-                  ></ProductView>
-                  <div
-                    style={{
-                      display: "grid",
-                      width: "60%",
-                      margin: "10px auto",
-                      minWidth: "150px",
-                    }}
-                  >
-                    <Link to="/basket">
-                      <Button
-                        text="View Basket"
-                        style={{
-                          background: "#F69335",
-                          border: "5px solid #FAEBDE",
-                          padding: "20px",
-                          boxSizing: "border-box",
-                          boxShadow: "0px 4px 11px rgba(0, 0, 0, 0.51)",
-                          width: "100%",
-                        }}
-                      ></Button>
-                    </Link>
-                  </div>
-                </div>
+                <ProductView
+                  addToBasket={addToBasket}
+                  beerTypes={copy}
+                  taps={taps}
+                ></ProductView>
               )}
             />
+            {/* Basket */}
             <Route
               path="/basket"
               render={() => (
-                <div
-                  style={{
-                    margin: "10px",
-                  }}
-                >
-                  <BasketView
-                    basket={basket}
-                    removeFromBasket={removeFromBasket}
-                    updateAmountInBasket={updateAmountInBasket}
-                    setTableNumber={setTableNumber}
-                    setPaymentMethod={setPaymentMethod}
-                    paymentMethod={paymentMethod}
-                  ></BasketView>
-                </div>
+                <BasketView
+                  basket={basket}
+                  removeFromBasket={removeFromBasket}
+                  updateAmountInBasket={updateAmountInBasket}
+                  setTableNumber={setTableNumber}
+                  setPaymentMethod={setPaymentMethod}
+                  paymentMethod={paymentMethod}
+                ></BasketView>
               )}
             />
+            {/* Payment */}
             <Route
               path="/payment"
               render={() => (
@@ -214,31 +157,11 @@ function App() {
                 </div>
               )}
             />
+            {/* Thank you for ordering view */}
             <Route
               path="/thanks"
               render={() => (
-                <div>
-                  <a href="http://skovgaart.dk/kea/foobar/index.html">
-                    <button
-                      style={{
-                        display: "grid",
-                        background: "none",
-                        border: "none",
-                        color: "white",
-                        opacity: "0.9",
-                        textAlign: "left",
-                        paddingBottom: "15px",
-                        width: "100%",
-                        paddingLeft: "10px",
-                        maxWidth: "1000px",
-                        margin: "auto",
-                      }}
-                    >
-                      ← to frontpage
-                    </button>
-                  </a>
-                  <ThankYouView orderNumber={orderNumber}></ThankYouView>
-                </div>
+                <ThankYouView orderNumber={orderNumber}></ThankYouView>
               )}
             />
           </Switch>

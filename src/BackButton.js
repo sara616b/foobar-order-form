@@ -1,25 +1,21 @@
-import { Link } from "react-router-dom";
-
-export default function BackButton({ linkTo, text }) {
+export default function BackButton({ linkTo, text, type }) {
   return (
-    <Link to={linkTo}>
-      <button
-        style={{
-          display: "grid",
-          background: "none",
-          border: "none",
-          color: "white",
-          opacity: "0.9",
-          textAlign: "left",
-          paddingBottom: "15px",
-          width: "100%",
-          paddingLeft: "10px",
-          maxWidth: "1000px",
-          margin: "auto",
-        }}
-      >
-        ← back{text}
-      </button>
-    </Link>
+    <button
+      style={{
+        display: "grid",
+        background: "none",
+        border: "none",
+        color: "white",
+        opacity: "0.9",
+        textAlign: "left",
+        paddingBottom: "15px",
+        width: "100%",
+        paddingLeft: "10px",
+        maxWidth: "1000px",
+        margin: "auto",
+      }}
+    >
+      ← back{text}
+    </button>
   );
 }

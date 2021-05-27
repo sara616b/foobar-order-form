@@ -20,6 +20,7 @@ export default function BeerForBasketView({
           marginBottom: "10px",
         }}
       >
+        {/* image */}
         <div
           style={{
             flexBasis: "100px",
@@ -47,11 +48,9 @@ export default function BeerForBasketView({
               flexDirection: "row",
             }}
           >
+            {/* name */}
             <h2
               style={{
-                fontFamily: "Roboto",
-                fontStyle: "normal",
-                fontWeight: "normal",
                 fontSize: "20px",
                 lineHeight: "28px",
                 letterSpacing: "0.1em",
@@ -59,6 +58,7 @@ export default function BeerForBasketView({
             >
               {info.name}
             </h2>
+            {/* delete button */}
             <button
               style={{
                 textAlign: "center",
@@ -78,10 +78,9 @@ export default function BeerForBasketView({
             </button>
           </div>
           <div>
+            {/* subtotal price */}
             <p
               style={{
-                fontFamily: "Roboto",
-                fontStyle: "normal",
                 fontWeight: "300",
                 fontSize: "18px",
               }}
@@ -95,16 +94,9 @@ export default function BeerForBasketView({
               flexDirection: "row",
             }}
           >
+            {/* less button */}
             <button
-              style={{
-                border: "2px solid #F69335",
-                boxSizing: "border-box",
-                borderRadius: "33px",
-                background: "#0D0601",
-                color: "#FAEBDE",
-                width: "40px",
-                height: "20px",
-              }}
+              className="amountButton"
               onClick={() => updateAmountInBasket(info, "-")}
               disabled={info.amount === 1}
             >
@@ -112,8 +104,6 @@ export default function BeerForBasketView({
             </button>
             <p
               style={{
-                fontFamily: "Roboto",
-                fontStyle: "normal",
                 fontWeight: "300",
                 fontSize: "20px",
                 lineHeight: "23px",
@@ -122,16 +112,9 @@ export default function BeerForBasketView({
             >
               {info.amount}
             </p>
+            {/* more button */}
             <button
-              style={{
-                border: "2px solid #F69335",
-                boxSizing: "border-box",
-                borderRadius: "33px",
-                background: "#0D0601",
-                color: "#FAEBDE",
-                width: "40px",
-                height: "20px",
-              }}
+              className="amountButton"
               onClick={() => updateAmountInBasket(info, "+")}
             >
               +

@@ -9,7 +9,7 @@ export default function Footer() {
         </div>
 
         <div className="adress">
-          <p>Address:</p>
+          <p>Address</p>
           <p>In a city</p>
           <p>Denmark</p>
         </div>

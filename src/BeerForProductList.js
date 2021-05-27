@@ -11,6 +11,7 @@ export default function BeerForProductList({
   const beersOnTap = taps.map((tap) => tap.beer);
   const soldOut = beersOnTap.indexOf(info.name) === -1 ? true : false;
 
+  // Addbutton animation when added
   function moveAnime(e) {
     e.style.backgroundColor = "black";
     e.style.color = "white";
@@ -46,6 +47,7 @@ export default function BeerForProductList({
           height: "100%",
         }}
       >
+        {/* image */}
         <div
           style={{
             flexBasis: "130px",
@@ -78,11 +80,9 @@ export default function BeerForProductList({
               flexDirection: "row",
             }}
           >
+            {/* name */}
             <h2
               style={{
-                fontFamily: "Roboto",
-                fontStyle: "normal",
-                fontWeight: "normal",
                 fontSize: "20px",
                 lineHeight: "28px",
                 letterSpacing: "0.1em",
@@ -90,28 +90,33 @@ export default function BeerForProductList({
             >
               {info.name}
             </h2>
+            {/* info */}
             <div
               className="infoButton"
               style={{
                 textAlign: "center",
                 borderRadius: "50%",
                 background: "#FAEBDE",
-                fontWeight: "600",
+                fontWeight: "500",
                 color: "#0D0601",
                 width: "25px",
                 height: "25px",
                 margin: "-3px 0 0 5px",
+                display: "flex",
+                alignItems: "center",
+                flexDirection: "column",
+                justifyContent: "center",
+                padding: "10px",
               }}
               onClick={() => togglePopup(info)}
             >
               i
             </div>
           </div>
+          {/* price */}
           <div>
             <p
               style={{
-                fontFamily: "Roboto",
-                fontStyle: "normal",
                 fontWeight: "300",
                 fontSize: "18px",
               }}
@@ -119,6 +124,7 @@ export default function BeerForProductList({
               25 kr/stk
             </p>
           </div>
+          {/* if sold out buttons will be disabled */}
           <div
             style={{
               display: "flex",
@@ -129,15 +135,7 @@ export default function BeerForProductList({
             className={soldOut ? "soldout" : ""}
           >
             <button
-              style={{
-                border: "2px solid #F69335",
-                boxSizing: "border-box",
-                borderRadius: "33px",
-                background: "#0D0601",
-                color: "#FAEBDE",
-                width: "40px",
-                height: "20px",
-              }}
+              className="amountButton"
               onClick={() => {
                 setAmount((prevState) => (prevState -= 1));
               }}
@@ -147,8 +145,6 @@ export default function BeerForProductList({
             </button>
             <p
               style={{
-                fontFamily: "Roboto",
-                fontStyle: "normal",
                 fontWeight: "300",
                 fontSize: "20px",
                 lineHeight: "23px",
@@ -157,15 +153,7 @@ export default function BeerForProductList({
               {amount}
             </p>
             <button
-              style={{
-                border: "2px solid #F69335",
-                boxSizing: "border-box",
-                borderRadius: "33px",
-                background: "#0D0601",
-                color: "#FAEBDE",
-                width: "40px",
-                height: "20px",
-              }}
+              className="amountButton"
               onClick={() => {
                 setAmount((prevState) => (prevState += 1));
               }}
@@ -178,9 +166,6 @@ export default function BeerForProductList({
       </div>
       <button
         style={{
-          fontFamily: "Roboto",
-          fontStyle: "normal",
-          fontWeight: "normal",
           fontSize: "15px",
           textAlign: "center",
           padding: "15px",

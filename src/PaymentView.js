@@ -1,5 +1,5 @@
 import BackButton from "./BackButton";
-import { useHistory } from "react-router-dom";
+import { useHistory, Link } from "react-router-dom";
 import BeerForPaymentView from "./BeerForPaymentView";
 
 export default function PaymentView({
@@ -12,6 +12,7 @@ export default function PaymentView({
 }) {
   let history = useHistory();
   const submitHandler = (e) => {
+    // if e is undefined it's because the payment method isn't credit card witch means there's no credit card info to post
     if (e !== undefined) {
       e.preventDefault();
       post(e.target);
@@ -64,14 +65,16 @@ export default function PaymentView({
 
     const jsonObjectTwo = await response.json();
 
-    updateOrderNumber(jsonObjectTwo.id)
+    updateOrderNumber(jsonObjectTwo.id);
 
     console.log(jsonObjectTwo.id);
   }
 
   return (
     <section className="placeContent">
-      <BackButton linkTo={"/basket"}></BackButton>
+      <Link to="/basket">
+        <BackButton></BackButton>
+      </Link>
 
       {paymentMethod === "Credit Card" ? (
         <div>
@@ -155,7 +158,6 @@ export default function PaymentView({
                 pattern="(?:20|21)[2-9]{2}-(?:(?:0[1-9]|1[0-2])-(?:0[1-9]|1[0-9]|2[0-9])|(?:(?!02)(?:0[1-9]|1[0-2])-(?:30))|(?:(?:0[13578]|1[02])-31))"
                 required
               />
-
               <span className="error" id="err-name" aria-live="assertive">
                 The date must be between 2022 - 2100
               </span>
@@ -177,28 +179,21 @@ export default function PaymentView({
               </span>
             </label>
 
-            <button type="submit" className="formButton">
+            <button type="submit" className="orangeButton">
               Place order
             </button>
           </form>
         </div>
       ) : (
+        // If payment isn't credit card
         <div>
           <h2>
             This is a prototype, so you won't be directed to your chosen payment
-            method. Please click place order to move on
+            method. Please click place order to move on.
           </h2>
 
           <button
-            style={{
-              background: "#F69335",
-              border: "5px solid #FAEBDE",
-              padding: "20px",
-              margin: "10px 0",
-              boxSizing: "border-box",
-              boxShadow: "0px 4px 11px rgba(0, 0, 0, 0.51)",
-              width: "100%",
-            }}
+            className="orangeButton"
             onClick={() => submitHandler(undefined)}
           >
             Place Order

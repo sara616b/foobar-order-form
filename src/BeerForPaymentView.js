@@ -15,6 +15,7 @@ export default function BeerForPaymentView({ info }) {
           justifyContent: "space-between",
         }}
       >
+        {/* image */}
         <div
           style={{
             flexBasis: "100px",
@@ -43,6 +44,7 @@ export default function BeerForPaymentView({ info }) {
               flexDirection: "column",
             }}
           >
+            {/* name */}
             <h2
               style={{
                 fontFamily: "Roboto",
@@ -54,6 +56,7 @@ export default function BeerForPaymentView({ info }) {
             >
               {info.name}
             </h2>
+            {/* details */}
             <p
               style={{
                 fontFamily: "Roboto",

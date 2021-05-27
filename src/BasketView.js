@@ -11,8 +11,10 @@ export default function BasketView({
   setTableNumber,
   setPaymentMethod,
 }) {
+  // Calculate total price of order
   let totalPrice = 0;
   basket.map((product) => (totalPrice += product.amount * 25));
+  // array of possible payment mothods
   let paymentMethods = ["Credit Card", "MobilePay", "ApplePay", "Cash"];
 
   return (
@@ -22,9 +24,12 @@ export default function BasketView({
         gridGap: "20px",
         maxWidth: "600px",
         margin: "0 auto",
+        padding: "10px",
       }}
     >
-      <BackButton linkTo={"/"}></BackButton>
+      <Link to="/">
+        <BackButton></BackButton>
+      </Link>
       <h2>Your Basket</h2>
       <div
         style={{
@@ -33,6 +38,7 @@ export default function BasketView({
           gridTemplateColumns: "repeat(auto-fill, minmax(100%, 1fr))",
         }}
       >
+        {/* If nothing in basket show text else show basket items by mapping over basket */}
         {basket.length !== 0 ? (
           basket.map((product) => (
             <BeerForBasketView
@@ -49,6 +55,7 @@ export default function BasketView({
 
       <p>Total: {totalPrice} kr.</p>
 
+      {/* form for table number + payment method */}
       <form onSubmit={(e) => updateOrderData(e)}>
         <label htmlFor="tablenumber">
           <h3>Tablenumber</h3>
@@ -72,6 +79,7 @@ export default function BasketView({
         </label>
 
         <h3>Choose Payment Method</h3>
+        {/* mapping over paymentmethods and making a radio button for each */}
         {paymentMethods.map((element) => {
           return (
             <RadioButton
@@ -84,19 +92,9 @@ export default function BasketView({
         })}
       </form>
 
+      {/* Link to payment (disabled if empty basket) */}
       <Link to={basket.length > 0 ? "/payment" : ""}>
-        <button
-          style={{
-            background: "#F69335",
-            border: "5px solid #FAEBDE",
-            padding: "20px",
-            margin: "10px 0",
-            boxSizing: "border-box",
-            boxShadow: "0px 4px 11px rgba(0, 0, 0, 0.51)",
-            width: "100%",
-          }}
-          disabled={basket.length === 0}
-        >
+        <button className="orangeButton" disabled={basket.length === 0}>
           {basket.length > 0 ? "Go To Payment" : "Your basket is empty"}
         </button>
       </Link>

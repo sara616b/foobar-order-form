@@ -157,7 +157,7 @@ export default function PaymentView({
               />
 
               <span className="error" id="err-name" aria-live="assertive">
-                The date must be between 2000 - 2100
+                The date must be between 2022 - 2100
               </span>
             </label>
 

@@ -8,6 +8,7 @@ export default function PaymentView({
   paymentMethod,
   basket,
   clearBasket,
+  updateOrderNumber,
 }) {
   let history = useHistory();
   const submitHandler = (e) => {
@@ -49,17 +50,23 @@ export default function PaymentView({
     console.log(jsonObject);
   }
 
-  function postToHeroku() {
+  async function postToHeroku() {
     const postData = JSON.stringify(orderInfo);
     console.log(postData);
 
-    fetch("https://foobar-vas.herokuapp.com/order", {
+    const response = await fetch("https://foobar-vas.herokuapp.com/order", {
       method: "post",
       headers: {
         "Content-Type": "application/json; charset=utf-8",
       },
       body: postData,
     });
+
+    const jsonObjectTwo = await response.json();
+
+    updateOrderNumber(jsonObjectTwo.id)
+
+    console.log(jsonObjectTwo.id);
   }
 
   return (
@@ -145,12 +152,12 @@ export default function PaymentView({
                 id="expirationDate"
                 autoComplete="xyz"
                 placeholder="2021-06-04"
-                pattern="((?:20|20)[0-9]{2}-(?:(?:0[1-9]|1[0-2])-(?:0[1-9]|1[0-9]|2[0-9])|(?:(?!02)(?:0[1-9]|1[0-2])-(?:30))|(?:(?:0[13578]|1[02])-31))"
+                pattern="(?:20|21)[2-9]{2}-(?:(?:0[1-9]|1[0-2])-(?:0[1-9]|1[0-9]|2[0-9])|(?:(?!02)(?:0[1-9]|1[0-2])-(?:30))|(?:(?:0[13578]|1[02])-31))"
                 required
               />
 
               <span className="error" id="err-name" aria-live="assertive">
-                The date must be between 2019 - 2028
+                The date must be between 2000 - 2100
               </span>
             </label>
 

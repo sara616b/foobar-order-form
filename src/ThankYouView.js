@@ -1,4 +1,6 @@
-export default function ThankYouView() {
+export default function ThankYouView(
+  {orderNumber}
+) {
   return (
     <section className="placeContent">
 
@@ -9,7 +11,7 @@ export default function ThankYouView() {
       <div className="textAlign">
         <h2>Your order is on the way.</h2>
         <h2 className="colorOrange">Your order number is:</h2>
-        <h2 className="colorOrange">XXX</h2>
+        <h2 className="colorOrange">{orderNumber}</h2>
       </div>
 
       <div className="placeText">

@@ -18,6 +18,7 @@ function App() {
   const [orderInfo, setOrderInfo] = useState();
   const [paymentMethod, setPaymentMethod] = useState("");
   const [queueLenght, setQueueLenght] = useState(0);
+  const [orderNumber, setOrderNumber] = useState(0);
   useEffect(() => {
     fetch("https://foobar-vas.herokuapp.com/beertypes")
       .then((res) => res.json())
@@ -46,6 +47,12 @@ function App() {
     });
     setOrderInfo(updatedOrder);
   }, [basket]);
+
+  function updateOrderNumber (orderNumberValue) {
+    setOrderNumber(orderNumberValue);
+
+    console.log(orderNumber);
+  }
 
   function addToBasket(payload) {
     const inBasket = basket.findIndex((item) => item.name === payload.name);
@@ -185,6 +192,7 @@ function App() {
                     paymentMethod={paymentMethod}
                     basket={basket}
                     clearBasket={clearBasket}
+                    updateOrderNumber={updateOrderNumber}
                   ></PaymentView>
                 </div>
               )}
@@ -194,7 +202,10 @@ function App() {
               render={() => (
                 <div>
                   <BackButton linkTo={"/"} text={" to frontpage"}></BackButton>
-                  <ThankYouView></ThankYouView>
+                  <ThankYouView
+                    orderNumber={orderNumber}
+                  >
+                  </ThankYouView>
                 </div>
               )}
             />

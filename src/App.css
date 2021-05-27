@@ -230,3 +230,45 @@ input[name="payment"] + label {
 input[name="payment"] + label svg {
   height: 15px;
 }
+
+/* Queue animation */
+
+#one {
+  animation-name: one;
+  animation-duration: 4s;
+  animation-iteration-count: infinite;
+  animation-timing-function: ease-in-out;
+  position: relative;
+}
+
+@keyframes one {
+  0% {
+    left: 0;
+    opacity: 100;
+  }
+
+  100% {
+    left: 100px;
+    opacity: 0;
+  }
+}
+
+#three {
+  animation-name: three;
+  animation-duration: 4s;
+  animation-iteration-count: infinite;
+  animation-timing-function: ease-in-out;
+  position: relative;
+}
+
+@keyframes three {
+  0% {
+    left: 100px;
+    opacity: 0;
+  }
+
+  100% {
+    left: 0;
+    opacity: 1;
+  }
+}

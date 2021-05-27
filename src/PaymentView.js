@@ -115,7 +115,7 @@ export default function PaymentView({
                 name="cardNumber"
                 id="cardNumber"
                 autoComplete="xyz"
-                placeholder="XXXX-XXXX-XXXX-XXXX"
+                placeholder="XXXX XXXX XXXX XXXX"
                 minLength="16"
                 maxLength="19"
                 min="0000 0000 0000 0000"

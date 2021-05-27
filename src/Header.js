@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 export default function Header({ basket, queueLenght }) {
   let basketAmount = 0;
   basket.map((product) => (basketAmount += product.amount));
+
   return (
     <header
       style={{
@@ -58,7 +59,7 @@ export default function Header({ basket, queueLenght }) {
                 ry="22.5"
               />
             </g>
-            <g id="first">
+            <g id="one">
               <path
                 stroke="white"
                 strokeWidth="5"

@@ -3,7 +3,6 @@ import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 import { useState, useEffect } from "react";
 import Header from "./Header";
 import Footer from "./Footer";
-import BackButton from "./BackButton";
 import Button from "./Button";
 import ProductView from "./ProductView";
 import BasketView from "./BasketView";
@@ -48,7 +47,7 @@ function App() {
     setOrderInfo(updatedOrder);
   }, [basket]);
 
-  function updateOrderNumber (orderNumberValue) {
+  function updateOrderNumber(orderNumberValue) {
     setOrderNumber(orderNumberValue);
 
     console.log(orderNumber);
@@ -131,7 +130,25 @@ function App() {
                     maxWidth: "1000px",
                   }}
                 >
-                  <BackButton linkTo={"/"}></BackButton>
+                  <a href="http://skovgaart.dk/kea/foobar/index.html">
+                    <button
+                      style={{
+                        display: "grid",
+                        background: "none",
+                        border: "none",
+                        color: "white",
+                        opacity: "0.9",
+                        textAlign: "left",
+                        paddingBottom: "15px",
+                        width: "100%",
+                        paddingLeft: "10px",
+                        maxWidth: "1000px",
+                        margin: "auto",
+                      }}
+                    >
+                      ← back
+                    </button>
+                  </a>
 
                   <ProductView
                     addToBasket={addToBasket}
@@ -201,11 +218,26 @@ function App() {
               path="/thanks"
               render={() => (
                 <div>
-                  <BackButton linkTo={"/"} text={" to frontpage"}></BackButton>
-                  <ThankYouView
-                    orderNumber={orderNumber}
-                  >
-                  </ThankYouView>
+                  <a href="http://skovgaart.dk/kea/foobar/index.html">
+                    <button
+                      style={{
+                        display: "grid",
+                        background: "none",
+                        border: "none",
+                        color: "white",
+                        opacity: "0.9",
+                        textAlign: "left",
+                        paddingBottom: "15px",
+                        width: "100%",
+                        paddingLeft: "10px",
+                        maxWidth: "1000px",
+                        margin: "auto",
+                      }}
+                    >
+                      ← to frontpage
+                    </button>
+                  </a>
+                  <ThankYouView orderNumber={orderNumber}></ThankYouView>
                 </div>
               )}
             />

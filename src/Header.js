@@ -79,7 +79,7 @@ export default function Header({ basket, queueLenght }) {
         </p>
       </div>
       <div>
-        <Link to="/">
+        <a href="http://skovgaart.dk/kea/foobar/index.html">
           <h1
             style={{
               fontFamily: "Rasa, serif",
@@ -96,7 +96,7 @@ export default function Header({ basket, queueLenght }) {
           >
             FooBar
           </h1>
-        </Link>
+        </a>
       </div>
 
       <Link to="/basket">

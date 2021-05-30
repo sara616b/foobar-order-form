@@ -27,7 +27,7 @@ export default function Header({ basket, queueLenght }) {
           viewBox="400 400 410 410"
         >
           <g id="black-white">
-            <g id="three">
+            <g id="three" fill="white">
               <path
                 stroke="white"
                 strokeWidth="5"
@@ -43,7 +43,7 @@ export default function Header({ basket, queueLenght }) {
                 ry="20.12"
               />
             </g>
-            <g id="two">
+            <g id="two" fill="white">
               <path
                 stroke="white"
                 strokeWidth="5"
@@ -59,7 +59,7 @@ export default function Header({ basket, queueLenght }) {
                 ry="22.5"
               />
             </g>
-            <g id="one">
+            <g id="one" fill="white">
               <path
                 stroke="white"
                 strokeWidth="5"

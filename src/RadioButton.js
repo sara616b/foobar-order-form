@@ -47,7 +47,7 @@ export default function RadioButton({ text, name, onChange }) {
           <svg
             className="mobile"
             xmlns="http://www.w3.org/2000/svg"
-            viewBox="0 0 70 69"
+            viewBox="0 0 500 69"
           >
             <g fill="none">
               <path
@@ -72,7 +72,7 @@ export default function RadioButton({ text, name, onChange }) {
         {text === "ApplePay" ? (
           <svg
             className="apple"
-            viewBox="0 0 60 27"
+            viewBox="0 11 60 17"
             xmlns="http://www.w3.org/2000/svg"
           >
             <g>

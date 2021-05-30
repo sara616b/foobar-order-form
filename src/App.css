@@ -251,7 +251,7 @@ input[name="payment"] + label {
   flex-direction: row;
 }
 input[name="payment"] + label svg {
-  height: 15px;
+  height: 20px;
 }
 
 /* Queue animation */

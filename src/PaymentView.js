@@ -153,14 +153,15 @@ export default function PaymentView({
                 display: "flex",
                 flexDirection: "row",
                 alignItems: "center",
+                width: "95%",
               }}>
                 <input
                   type="text"
                   name="expirationDate"
                   id="expirationDate"
                   autoComplete="xyz"
-                  placeholder="06"
-                  pattern="[0-9]{2}"
+                  placeholder="Month"
+                  pattern="(?:0[0-9]|1[0-2])"
                   required
                 />
                 <p style={{
@@ -171,14 +172,24 @@ export default function PaymentView({
                   name="expirationDate"
                   id="expirationDate"
                   autoComplete="xyz"
-                  placeholder="20"
-                  pattern="[20-30]{2}"
+                  placeholder="Year"
+                  pattern="(?:2[0-9]|0[0-9])"
                   required
                 />
+                <span className="errorDate" id="err-name" aria-live="assertive" style={{
+                  margin: "5px 0 10px 0",
+                }}>
+                  <p>
+                    The first is the month the second is the year
+                  </p>
+                  <p>
+                    The month has to be between 01 - 12
+                  </p> 
+                  <p>
+                    The year has to be between 20 - 29
+                  </p>
+                </span>
               </div>
-              <span className="error" id="err-name" aria-live="assertive">
-                The date must be between 2022 - 2100
-              </span>
             </label>
 
             <label htmlFor="cvv">

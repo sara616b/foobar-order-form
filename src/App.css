@@ -103,12 +103,6 @@ input[name="cvv"] {
   margin-bottom: 10px;
 }
 
-label[htmlFor="expirationDate"] {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-}
-
 input[name="expirationDate"] {
   width: 100px;
 }
@@ -159,9 +153,15 @@ input[type="number"]:invalid:not(:placeholder-shown, :focus) {
 input[type="text"]:invalid:not(:placeholder-shown, :focus) + .error,
 input[type="number"]:invalid:not(:placeholder-shown, :focus) + .error {
   max-height: 2rem;
+  margin-bottom: 10px;
 }
 
-.error {
+input:invalid:not(:placeholder-shown, :focus) ~ .errorDate {
+  max-height: 3.5rem;
+}
+
+.error,
+.errorDate {
   color: red;
   max-height: 0;
   overflow: hidden;

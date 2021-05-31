@@ -45,7 +45,7 @@ export default function ProductView({ addToBasket, beerTypes, taps }) {
       <div
         style={{
           display: "grid",
-          gridGap: "20px",
+          gridGap: "30px",
           width: "100%",
           margin: "auto",
           gridTemplateColumns: "repeat(auto-fill, minmax(250px, 1fr))",

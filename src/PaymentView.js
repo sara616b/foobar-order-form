@@ -148,16 +148,34 @@ export default function PaymentView({
             </label>
 
             <label htmlFor="expirationDate">
-              Expiration date
-              <input
-                type="text"
-                name="expirationDate"
-                id="expirationDate"
-                autoComplete="xyz"
-                placeholder="2022-06-04"
-                pattern="(?:20|21)[2-9]{2}-(?:(?:0[1-9]|1[0-2])-(?:0[1-9]|1[0-9]|2[0-9])|(?:(?!02)(?:0[1-9]|1[0-2])-(?:30))|(?:(?:0[13578]|1[02])-31))"
-                required
-              />
+                Expiration date
+              <div style={{
+                display: "flex",
+                flexDirection: "row",
+                alignItems: "center",
+              }}>
+                <input
+                  type="text"
+                  name="expirationDate"
+                  id="expirationDate"
+                  autoComplete="xyz"
+                  placeholder="06"
+                  pattern="[0-9]{2}"
+                  required
+                />
+                <p style={{
+                  margin: "0 10px 0 10px",
+                }}> / </p>
+                <input
+                  type="text"
+                  name="expirationDate"
+                  id="expirationDate"
+                  autoComplete="xyz"
+                  placeholder="20"
+                  pattern="[20-30]{2}"
+                  required
+                />
+              </div>
               <span className="error" id="err-name" aria-live="assertive">
                 The date must be between 2022 - 2100
               </span>

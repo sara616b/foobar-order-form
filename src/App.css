@@ -94,9 +94,23 @@ input[type="number"] {
   border: 2px solid #d7b191;
   border-radius: 5px;
 }
-input[name="cvv"],
-input[name="expirationDate"] {
+input[name="cvv"] {
   width: 150px;
+}
+
+.tableText {
+  width: 450px;
+  margin-bottom: 10px;
+}
+
+label[htmlFor="expirationDate"] {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+input[name="expirationDate"] {
+  width: 100px;
 }
 
 .formButton {

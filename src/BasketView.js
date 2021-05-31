@@ -59,6 +59,8 @@ export default function BasketView({
       <form onSubmit={(e) => updateOrderData(e)}>
         <label htmlFor="tablenumber">
           <h3>Tablenumber</h3>
+          <p className="tableText">Find your table’s number on the sign in the middle of the table.</p>
+          <p className="tableText">If left empty, bartenders will call your order number and the beers can be retrieved from the bar. </p>
           <input
             type="number"
             name="tablenumber"
@@ -74,7 +76,7 @@ export default function BasketView({
             }}
           />
           <span className="error" id="err-name" aria-live="assertive">
-            Must be a valid number
+            Must be a number between 1 - 100
           </span>
         </label>
 

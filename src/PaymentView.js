@@ -29,7 +29,8 @@ export default function PaymentView({
     const postData = JSON.stringify({
       cardNumber: form.elements.cardNumber.value,
       nameOnCard: form.elements.nameOnCard.value,
-      expirationDate: form.elements.expirationDate.value,
+      expirationDateM: form.elements.expirationDateM.value,
+      expirationDateY: form.elements.expirationDateY.value,
       cvv: form.elements.cvv.value,
       order: orderInfo,
       tableNumber: tablenumber,
@@ -151,13 +152,14 @@ export default function PaymentView({
                 Expiration date
               <div style={{
                 display: "flex",
+                flexWrap: "wrap",
                 flexDirection: "row",
                 alignItems: "center",
                 width: "95%",
               }}>
                 <input
                   type="text"
-                  name="expirationDate"
+                  name="expirationDateM"
                   id="expirationDate"
                   autoComplete="xyz"
                   placeholder="Month"
@@ -169,7 +171,7 @@ export default function PaymentView({
                 }}> / </p>
                 <input
                   type="text"
-                  name="expirationDate"
+                  name="expirationDateY"
                   id="expirationDate"
                   autoComplete="xyz"
                   placeholder="Year"

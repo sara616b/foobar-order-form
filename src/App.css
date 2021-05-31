@@ -103,7 +103,8 @@ input[name="cvv"] {
   margin-bottom: 10px;
 }
 
-input[name="expirationDate"] {
+input[name="expirationDateM"],
+input[name="expirationDateY"] {
   width: 100px;
 }
 

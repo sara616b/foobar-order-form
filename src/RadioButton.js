@@ -21,6 +21,7 @@ export default function RadioButton({ text, name, onChange }) {
           fontFamily: "Roboto",
           fontSize: "15px",
           display: "initial",
+          alignItems: "center",
         }}
       >
         {text}

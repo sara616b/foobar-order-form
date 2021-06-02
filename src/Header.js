@@ -16,7 +16,7 @@ export default function Header({ basket, queueLenght }) {
       <div
         style={{
           width: "25%",
-          maxWidth: "90px",
+          maxWidth: "60px",
           display: "flex",
           flexDirection: "row",
         }}
@@ -104,7 +104,10 @@ export default function Header({ basket, queueLenght }) {
         <div
           style={{
             width: "25%",
-            maxWidth: "100px",
+            maxWidth: "60px",
+            alignItems: "center",
+            display: "flex",
+            flexDirection: "column",
           }}
         >
           <svg

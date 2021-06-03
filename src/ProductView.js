@@ -38,7 +38,7 @@ export default function ProductView({ addToBasket, beerTypes, taps }) {
         maxWidth: "1000px",
       }}
     >
-      <a href="https://skovgaart.dk/kea/foobar_eksamen/index.html">
+      <a href="https://skovgaart.dk/kea/foobar_final/index.html">
         <BackButton></BackButton>
       </a>
       {/* div that holds products displayed with grid */}

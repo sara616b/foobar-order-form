@@ -10,6 +10,7 @@ export default function BasketView({
   updateOrderData,
   setTableNumber,
   setPaymentMethod,
+  paymentMethod,
 }) {
   // Calculate total price of order
   let totalPrice = 0;
@@ -53,14 +54,19 @@ export default function BasketView({
         )}
       </div>
 
-      <p>Total: {totalPrice} kr.</p>
+      <p style={{ fontSize: "20px" }}>Total: {totalPrice} kr.</p>
 
       {/* form for table number + payment method */}
       <form onSubmit={(e) => updateOrderData(e)}>
         <label htmlFor="tablenumber">
           <h3>Tablenumber</h3>
-          <p className="tableText">Find your table’s number on the sign in the middle of the table.</p>
-          <p className="tableText">If left empty, bartenders will call your order number and the beers can be retrieved from the bar. </p>
+          <p className="tableText">
+            Find your table’s number on the sign in the middle of the table.
+          </p>
+          <p className="tableText">
+            If left empty, bartenders will call your order number and the beers
+            can be retrieved from the bar.{" "}
+          </p>
           <input
             type="number"
             name="tablenumber"
@@ -70,6 +76,7 @@ export default function BasketView({
             max="100"
             style={{
               width: "100px",
+              marginBottom: "20px",
             }}
             onChange={(e) => {
               setTableNumber(e.target.value);
@@ -96,7 +103,10 @@ export default function BasketView({
 
       {/* Link to payment (disabled if empty basket) */}
       <Link to={basket.length > 0 ? "/payment" : ""}>
-        <button className="orangeButton" disabled={basket.length === 0}>
+        <button
+          className="orangeButton"
+          disabled={basket.length === 0 || paymentMethod === ""}
+        >
           {basket.length > 0 ? "Go To Payment" : "Your basket is empty"}
         </button>
       </Link>

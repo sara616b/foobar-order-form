@@ -107,7 +107,9 @@ function App() {
   });
 
   return (
-    <Router>
+    <Router
+    // basename="/kea/frontend/foobar"
+    >
       <div className="App">
         {/* background styled with wooden texture */}
         <div className="background"></div>

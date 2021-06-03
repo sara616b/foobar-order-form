@@ -8,7 +8,7 @@ export default function ThankYouView({ orderNumber }) {
         margin: "0 auto",
       }}
     >
-      <a href="https://skovgaart.dk/kea/eksamen_foobar_3sem/index.html">
+      <a href="https://skovgaart.dk/kea/foobar_eksamen/index.html">
         <BackButton text={" to frontpage"}></BackButton>
       </a>
       <section className="placeContent">
@@ -30,7 +30,7 @@ export default function ThankYouView({ orderNumber }) {
         </div>
 
         <div className="placeButton">
-          <a href="https://skovgaart.dk/kea/eksamen_foobar_3sem/index.html">
+          <a href="https://skovgaart.dk/kea/foobar_eksamen/index.html">
             <button className="orangeButton">Back to frontpage</button>
           </a>
         </div>
